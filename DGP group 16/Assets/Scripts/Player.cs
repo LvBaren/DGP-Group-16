@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     }
 
     public float moveSpeed = 7f;
+    public CameraPresetManager presetManager;
 
     // Update is called once per frame
     private void Update()
@@ -37,5 +38,21 @@ public class Player : MonoBehaviour
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
         transform.position += moveDirection * Time.deltaTime * moveSpeed;
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            presetManager.SwitchToCamera(0);
+        }
+        else if (Input.GetKey(KeyCode.V))
+        {
+            presetManager.SwitchToCamera(1);
+        }
+        else if ((Input.GetKey(KeyCode.B))) {
+            presetManager.SwitchToCamera(2);
+        }
+        else if ((Input.GetKey(KeyCode.N)))
+        {
+            presetManager.SwitchToCamera(3);
+        }
     }
 }
