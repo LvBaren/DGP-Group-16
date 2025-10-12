@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Startscherm.unity
     guid: c970b5992d233452f8c703b70b151742
   - enabled: 1
-    path: Assets/Scenes/Tandwielen.unity
+    path: Assets/Scenes/1.Tandwiel.unity
     guid: ff28e9bcaec1ed6448af159f31e93af2
   - enabled: 1
     path: Assets/Scenes/Bel.unity
     guid: d6388d442987b4b5ea0e0e99d917efd5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/1. Tandwiel.unity
     guid: 82b0bd13baaef49d5b5d2e5d3f63f1f9
   - enabled: 1

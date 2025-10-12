@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     private CapsuleCollider capsule;
     private bool isGrounded;
 
-    private float growthDuration = 60f;   // 5 minutes
-    private float targetScaleMultiplier = 1.5f; // grow 10× original size
+    private float growthDuration = 120f;   // 2 minutes
+    private float targetScaleMultiplier = 1.5f; // grow 1.5× original size
     private static float growthTimer = 0f;
     private Vector3 initialScale;
     private float initialColliderHeight;

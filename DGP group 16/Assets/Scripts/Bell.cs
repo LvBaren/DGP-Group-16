@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bell : MonoBehaviour
 {
-    private float swingAngle = 60f;   // Maximum rotation angle (degrees)
+    private float swingAngle = 20f;   // Maximum rotation angle (degrees)
     private float swingSpeed = 2f;    // Speed of swinging
 
     private float initialZ;          // Store initial rotation
