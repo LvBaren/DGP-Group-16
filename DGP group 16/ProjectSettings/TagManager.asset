@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player2
   - MovingPlatform
+  - Ground
   layers:
   - Default
   - TransparentFX

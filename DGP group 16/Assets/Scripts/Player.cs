@@ -1,58 +1,94 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class Player : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
-    {
-        
-    }
-
+    [Header("Movement Settings")]
     public float moveSpeed = 7f;
+    public float jumpForce = 5f;
     public CameraPresetManager presetManager;
 
-    // Update is called once per frame
+    private Rigidbody rb;
+    private CapsuleCollider capsule;
+    private bool isGrounded;
+
+    private float growthDuration = 60f;   // 5 minutes
+    private float targetScaleMultiplier = 1.5f; // grow 10× original size
+    private static float growthTimer = 0f;
+    private Vector3 initialScale;
+    private float initialColliderHeight;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+
+        capsule = GetComponent<CapsuleCollider>();
+        initialScale = transform.localScale;
+        initialColliderHeight = capsule.height;
+    }
+
     private void Update()
     {
-        Vector2 inputVector = new Vector2(0, 0);
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            inputVector.y = +1;
-        }
+        HandleMovement();
+        HandleJump();
+        HandleGrowth();
+    }
 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            inputVector.y = -1;
-        }
+    private void HandleMovement()
+    {
+        Vector3 moveDirection = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            inputVector.x = -1;
-        }
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) moveDirection.z += 1;
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) moveDirection.z -= 1;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) moveDirection.x -= 1;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) moveDirection.x += 1;
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            inputVector.x = +1;
-        }
-        inputVector = inputVector.normalized;
+        moveDirection = moveDirection.normalized;
+        Vector3 desiredVelocity = moveDirection * moveSpeed;
 
-        Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
-        transform.position += moveDirection * Time.deltaTime * moveSpeed;
+        // keep gravity/jump velocity
+        rb.linearVelocity = new Vector3(desiredVelocity.x, rb.linearVelocity.y, desiredVelocity.z);
+    }
 
-        if (Input.GetKey(KeyCode.C))
+    private void HandleJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            presetManager.SwitchToCamera(0);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
-        else if (Input.GetKey(KeyCode.V))
+    }
+
+    private void HandleGrowth()
+    {
+        if (growthTimer < growthDuration)
         {
-            presetManager.SwitchToCamera(1);
+            growthTimer += Time.deltaTime;
+            float t = Mathf.Clamp01(growthTimer / growthDuration);
+
+            // Gradually scale up to 10× original
+            float scaleMultiplier = Mathf.Lerp(1f, targetScaleMultiplier, t);
+            transform.localScale = initialScale * scaleMultiplier;
+
+            // Adjust capsule collider height accordingly
+            float newHeight = Mathf.Lerp(initialColliderHeight, initialColliderHeight * targetScaleMultiplier, t);
+            capsule.height = newHeight;
+            capsule.center = new Vector3(0, newHeight / 2f, 0);
         }
-        else if ((Input.GetKey(KeyCode.B))) {
-            presetManager.SwitchToCamera(2);
-        }
-        else if ((Input.GetKey(KeyCode.N)))
+        else
         {
-            presetManager.SwitchToCamera(3);
+            SceneManager.LoadScene("Startscherm");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
         }
     }
 }

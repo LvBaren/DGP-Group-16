@@ -26,7 +26,21 @@ public class GearAutoColliders : MonoBehaviour
 
         // oude kinderen wissen
         for (int i = collidersParent.childCount - 1; i >= 0; i--)
-            DestroyImmediate(collidersParent.GetChild(i).gameObject);
+        {
+            var child = collidersParent.GetChild(i).gameObject;
+        #if UNITY_EDITOR
+            if (Application.isPlaying)
+                Destroy(child);
+            else
+                UnityEditor.EditorApplication.delayCall += () =>
+                {
+                    if (child != null) DestroyImmediate(child);
+                };
+        #else
+            Destroy(child);
+        #endif
+        }
+
 
         // maak ring
         for (int i = 0; i < teeth; i++)
