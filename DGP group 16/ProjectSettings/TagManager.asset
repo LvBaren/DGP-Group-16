@@ -7,6 +7,7 @@ TagManager:
   - Player2
   - MovingPlatform
   - Ground
+  - Test player
   layers:
   - Default
   - TransparentFX

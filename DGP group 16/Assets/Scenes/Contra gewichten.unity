@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.79
+      value: 25.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 127178730}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4300,7 +4300,7 @@ GameObject:
   - component: {fileID: 891402256}
   - component: {fileID: 891402255}
   m_Layer: 0
-  m_Name: Terug naar Contra gewichten
+  m_Name: NextLevelPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4557,7 +4557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.43
+      value: 21.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4622,7 +4622,7 @@ GameObject:
   - component: {fileID: 924665131}
   - component: {fileID: 924665130}
   m_Layer: 0
-  m_Name: Naar level Bel
+  m_Name: NextLevelPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4728,7 +4728,7 @@ Transform:
   m_GameObject: {fileID: 924665129}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 17.4, y: 55.14, z: 4.36}
+  m_LocalPosition: {x: 21.18, y: 55.14, z: 4.29}
   m_LocalScale: {x: 0.3, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8402,7 +8402,7 @@ GameObject:
   - component: {fileID: 2062300191}
   - component: {fileID: 2062300190}
   m_Layer: 0
-  m_Name: Naar level Meenemen Tandwiel
+  m_Name: NextLevelPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8508,7 +8508,7 @@ Transform:
   m_GameObject: {fileID: 2062300189}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 18.62, y: 27.56, z: 4.26}
+  m_LocalPosition: {x: 25.26, y: 27.56, z: 4.07}
   m_LocalScale: {x: 0.3, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
