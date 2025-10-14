@@ -7,7 +7,7 @@ public class Ladder : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Test player"))
+        if (other.CompareTag("Player"))
         {
             Rigidbody rb = other.attachedRigidbody;
             if (rb == null) return;
@@ -34,7 +34,7 @@ public class Ladder : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Test player"))
+        if (other.CompareTag("Player"))
         {
             Rigidbody rb = other.attachedRigidbody;
             if (rb != null)
