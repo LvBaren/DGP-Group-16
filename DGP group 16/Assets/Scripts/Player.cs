@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 7f;
     public float jumpForce = 5f;
     public CameraPresetManager presetManager;
+    [SerializeField] private Transform spookje;
 
     private Rigidbody rb;
     private CapsuleCollider capsule;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
     private Vector3 initialScale;
     private float initialColliderHeight;
     private float rotationSpeed = 500; // How fast the character turns to the side their moving towards.
+    private Vector3 initialScaleSpookje;
 
     private void Start()
     {
@@ -29,6 +32,8 @@ public class Player : MonoBehaviour
         capsule = GetComponent<CapsuleCollider>();
         initialScale = transform.localScale;
         initialColliderHeight = capsule.height;
+
+        initialScaleSpookje = spookje.localScale;
     }
 
     private void Update()
@@ -85,6 +90,9 @@ public class Player : MonoBehaviour
             float newHeight = Mathf.Lerp(initialColliderHeight, initialColliderHeight * targetScaleMultiplier, t);
             capsule.height = newHeight;
             capsule.center = new Vector3(0, newHeight / 2f, 0);
+
+            // Adjust visual size
+            spookje.localScale = initialScaleSpookje * scaleMultiplier;
         }
         else
         {
