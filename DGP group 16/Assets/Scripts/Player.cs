@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private static float growthTimer = 0f;
     private Vector3 initialScale;
     private float initialColliderHeight;
+    private float rotationSpeed = 500; // How fast the character turns to the side their moving towards.
 
     private void Start()
     {
@@ -48,6 +49,13 @@ public class Player : MonoBehaviour
 
         moveDirection = moveDirection.normalized;
         Vector3 desiredVelocity = moveDirection * moveSpeed;
+
+        if (moveDirection != Vector3.zero)
+        {
+            Quaternion rotation = Quaternion.LookRotation(-moveDirection, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        }
 
         // keep gravity/jump velocity
         rb.linearVelocity = new Vector3(desiredVelocity.x, rb.linearVelocity.y, desiredVelocity.z);
