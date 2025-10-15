@@ -3,7 +3,7 @@ using UnityEngine;
 public class Gear_System : MonoBehaviour
 {
     [Header("References")]
-    public GameObject[] gears = new GameObject[4];
+    public GameObject[] gears = new GameObject[6];
     public GameObject triggerGear;
 
     [Header("Rotation Settings")]
