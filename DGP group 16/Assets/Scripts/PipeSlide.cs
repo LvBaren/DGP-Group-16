@@ -4,10 +4,9 @@ using System.Collections;
 public class PipeSlide : MonoBehaviour
 {
     [Header("Slide Settings")]
-    public Transform exitPoint;      // waar speler uitkomt
-    public float slideForce = 10f;   // kracht waarmee speler vooruit wordt geduwd
-    public float maxSpeed = 20f;     // maximum snelheid tijdens glijden
-    public float exitBoost = 5f;     // extra snelheid bij het verlaten van de buis
+    public Transform exitPoint;     // waar de speler uitkomt
+    public float slideForce = 2f;  // kracht waarmee speler vooruit wordt geduwd
+    public float maxSpeed = 14f;    // maximale snelheid tijdens het glijden
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,11 +22,10 @@ public class PipeSlide : MonoBehaviour
 
     private IEnumerator SlideThroughPipe(Rigidbody rb)
     {
-        // Nieuw systeem: linearDamping ipv drag
+        // Gravity aan laten voor een realistisch gevoel
         rb.useGravity = true;
-        rb.linearDamping = 0.2f; // beetje luchtweerstand
 
-        // Schakel tijdelijk input of andere scripts uit
+        // Schakel tijdelijk andere scripts uit (zoals movement)
         MonoBehaviour[] allScripts = rb.GetComponents<MonoBehaviour>();
         foreach (var script in allScripts)
         {
@@ -35,22 +33,18 @@ public class PipeSlide : MonoBehaviour
                 script.enabled = false;
         }
 
-        // Zolang de speler niet bij de uitgang is
+        // Zolang speler niet bij de uitgang is, duw hem richting de uitgang
         while (Vector3.Distance(rb.position, exitPoint.position) > 1f)
         {
             Vector3 direction = (exitPoint.position - rb.position).normalized;
 
-            // Beperk snelheid
             if (rb.linearVelocity.magnitude < maxSpeed)
                 rb.AddForce(direction * slideForce, ForceMode.Acceleration);
 
             yield return null;
         }
 
-        // Exit boost
-        rb.AddForce(exitPoint.forward * exitBoost, ForceMode.VelocityChange);
-
-        // Besturing terug
+        // Herstel besturing na glijden
         foreach (var script in allScripts)
         {
             if (script != this)
