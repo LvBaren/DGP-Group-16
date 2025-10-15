@@ -59791,7 +59791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751c1b85c2cf54ba19ecda08374096c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneName: Contra gewichten
+  sceneName: Kruispunt
 --- !u!64 &1665148862
 MeshCollider:
   m_ObjectHideFlags: 0
