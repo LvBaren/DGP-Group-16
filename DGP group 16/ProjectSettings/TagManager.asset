@@ -8,6 +8,8 @@ TagManager:
   - MovingPlatform
   - Ground
   - Test player
+  - Pickable
+  - Dropzone
   layers:
   - Default
   - TransparentFX
