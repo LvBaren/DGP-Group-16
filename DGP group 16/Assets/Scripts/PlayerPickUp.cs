@@ -3,76 +3,105 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPickUp : MonoBehaviour
 {
-    [Header("Vasthouden")]
-    public Transform holdPoint;                          // sleep je HoldPoint hierheen
-    public Vector3 holdOffset   = new Vector3(0f, 0.2f, 0.6f);
-    public Vector3 holdRotation = new Vector3(0f, 90f, 0f);
+    [Header("Hold")]
+    public Transform holdPoint;
 
-    [Header("Oppakken")]
-    public float pickRadius = 0.9f;
-    public LayerMask pickupMask;                         // zet tijdelijk op Everything als test
+    [Header("Pickup")]
+    public float pickRadius = 1.5f;
+    public LayerMask pickupMask = ~0; // Everything for testing
 
-    [Header("Droppen")]
+    [Header("Drop")]
     public float dropForward = 0.4f;
     public float dropImpulse = 0f;
+
+    [Header("Sockets")]
+    public float socketDetectRadius = 0.7f;
+    public LayerMask socketMask = ~0; // set to your socket layer or Everything
 
     private PickupItem carried;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) TryPickup();
-        if (Input.GetKeyDown(KeyCode.D)) Drop();
+        if (Input.GetKeyDown(KeyCode.E)) TryPickup();
+        if (Input.GetKeyDown(KeyCode.Q)) TryDrop();
     }
 
-    private void TryPickup()
+    void TryPickup()
     {
         if (carried != null || holdPoint == null) return;
 
-        // Zoek dichtstbijzijnde oppakbare collider rond het holdPoint
-        Collider[] hits = Physics.OverlapSphere(holdPoint.position, pickRadius, pickupMask);
-        PickupItem best = null; float bestDist = float.MaxValue;
+        Vector3 center = holdPoint.position;
+        Collider[] hits = Physics.OverlapSphere(center, pickRadius, pickupMask);
+
+        PickupItem best = null;
+        float bestDist = float.MaxValue;
 
         foreach (var h in hits)
         {
             var item = h.GetComponent<PickupItem>();
             if (!item) continue;
 
-            float d = (h.transform.position - holdPoint.position).sqrMagnitude;
+            float d = (h.transform.position - center).sqrMagnitude;
             if (d < bestDist) { best = item; bestDist = d; }
         }
 
         if (best == null) return;
 
         carried = best;
-        carried.PickUp(holdPoint, holdOffset, holdRotation); // parent aan persistent Player
+        carried.PickUp(holdPoint);
     }
 
-    public void Drop()
+    void TryDrop()
     {
         if (carried == null) return;
 
-        // 1) EERST loskoppelen zodat het een root-obj wordt
         carried.transform.SetParent(null);
 
-        // 2) DAN naar de actieve scene verplaatsen (lost "not a root in a scene" op)
-        Scene active = SceneManager.GetActiveScene();
-        SceneManager.MoveGameObjectToScene(carried.gameObject, active);
+        // Try snap to a nearby socket
+        GearSocket socket = FindNearestSocketInFront();
+        if (socket != null && socket.CanAccept(carried))
+        {
+            carried.SnapToSocket(socket);
+            carried = null;
+            return;
+        }
 
-        // 3) Drop-positie/impuls bepalen
+        // Free drop
         Vector3 dropPos = holdPoint.position + holdPoint.forward * dropForward;
         Vector3 impulse = holdPoint.forward * dropImpulse;
 
-        // 4) Physics weer aan en klaar
-        carried.Drop(dropPos, impulse);
-
-        // 5) Player draagt niets meer
+        carried.DropFree(dropPos, impulse);
         carried = null;
     }
 
-    private void OnDrawGizmosSelected()
+    GearSocket FindNearestSocketInFront()
+    {
+        Vector3 origin = holdPoint.position;
+        Vector3 probe  = origin + holdPoint.forward * socketDetectRadius * 0.5f;
+
+        Collider[] hits = Physics.OverlapSphere(probe, socketDetectRadius, socketMask);
+
+        GearSocket best = null;
+        float bestDist = float.MaxValue;
+
+        foreach (var h in hits)
+        {
+            var s = h.GetComponent<GearSocket>();
+            if (!s) continue;
+
+            float d = (h.transform.position - origin).sqrMagnitude;
+            if (d < bestDist) { best = s; bestDist = d; }
+        }
+        return best;
+    }
+
+    void OnDrawGizmosSelected()
     {
         if (!holdPoint) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(holdPoint.position, pickRadius);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(holdPoint.position + holdPoint.forward * socketDetectRadius * 0.5f, socketDetectRadius);
     }
 }

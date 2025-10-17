@@ -1,49 +1,117 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
 public class PickupItem : MonoBehaviour
 {
+    [Header("Hold visual")]
+    public Vector3 holdOffset   = new Vector3(0f, 0.2f, 0.5f);
+    public Vector3 holdRotation = Vector3.zero;
+
+    [Header("Behaviour")]
+    public bool carryBetweenScenes = true;      // travels with persistent Player
+    [Tooltip("Enable for the RED gear so the system can stop/start.")]
+    public bool notifyGearSystem = false;
+
+    [Header("Start State")]
+    public bool startInSocket = false;          // gear starts already mounted
+    public GearSocket startSocket = null;       // optional: snap here on Start
+
+    [Header("Optional (auto-filled if null)")]
+    public GearSystemController systemController;
+
+    // runtime state
+    [HideInInspector] public bool isMountedInSocket = false;
+
     private Rigidbody rb;
     private Collider col;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb  = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+
+        if (notifyGearSystem && systemController == null)
+            systemController = FindAnyObjectByType<GearSystemController>();
     }
 
-    /// <summary>
-    /// Zet het item vast aan het holdPoint van de speler.
-    /// Player is persistent, dus het item reist als child mee tussen scenes.
-    /// </summary>
-    public void PickUp(Transform parent, Vector3 localPos, Vector3 localEuler)
+    void Start()
     {
-        // Altijd eerst de beweging stoppen...
-        rb.linearVelocity = Vector3.zero;
+        if (startInSocket && startSocket != null)
+        {
+            // snap immediately so it doesn't fall
+            SnapToSocket(startSocket);
+        }
+        else if (startInSocket && startSocket == null)
+        {
+            // mounted but no socket reference: freeze where it is
+            rb.isKinematic = true;
+            rb.useGravity  = false;
+            col.enabled    = true;      // keep collider ON so we can pick it later
+            isMountedInSocket = true;
+        }
+    }
+
+    // called by PlayerPickUp on P
+    public void PickUp(Transform holdPoint)
+    {
+        rb.linearVelocity        = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        // ...dán pas kinematic zetten (anders krijg je de warning).
         rb.isKinematic = true;
-        col.enabled = false;
+        rb.useGravity  = false;
+        col.enabled    = false;       // collider OFF while carrying
 
-        // Als child aan het holdPoint hangen.
-        transform.SetParent(parent);
-        transform.localPosition = localPos;
-        transform.localRotation = Quaternion.Euler(localEuler);
+        transform.SetParent(holdPoint);
+        transform.localPosition = holdOffset;
+        transform.localRotation = Quaternion.Euler(holdRotation);
+
+        isMountedInSocket = false;
+
+        if (notifyGearSystem && systemController != null)
+            systemController.OnRedGearPickedUp();
     }
 
-    /// <summary>
-    /// Laat het item los op worldPos en geef optioneel een duwtje.
-    /// </summary>
-    public void Drop(Vector3 worldPos, Vector3 impulse)
+    // free drop (no socket nearby)
+    public void DropFree(Vector3 worldPos, Vector3 impulse)
     {
+        transform.SetParent(null);
         transform.position = worldPos;
 
         rb.isKinematic = false;
-        col.enabled = true;
+        rb.useGravity  = true;
+        col.enabled    = true;
 
         if (impulse.sqrMagnitude > 0f)
             rb.AddForce(impulse, ForceMode.Impulse);
+
+        if (carryBetweenScenes)
+        {
+            Scene active = SceneManager.GetActiveScene();
+            SceneManager.MoveGameObjectToScene(gameObject, active);
+        }
+
+        isMountedInSocket = false;
+    }
+
+    // snap into a wall socket
+    public void SnapToSocket(GearSocket socket)
+    {
+        rb.isKinematic = true;
+        rb.useGravity  = false;
+        col.enabled    = true;  // collider ON while mounted so we can pick up again
+
+        Transform parent = socket.mountPoint != null ? socket.mountPoint : socket.transform;
+        transform.SetParent(parent);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+
+        isMountedInSocket = true;
+
+        if (notifyGearSystem && systemController != null)
+            systemController.OnRedGearReturned();
+
+        socket.OnItemSnapped(this);
     }
 }
