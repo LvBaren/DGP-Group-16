@@ -7,38 +7,43 @@ public class PickupItem : MonoBehaviour
     private Rigidbody rb;
     private Collider col;
 
-    private void Awake()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
     }
 
-    public void PickUp(Transform parent, Vector3 localPosition, Vector3 localEuler)
+    /// <summary>
+    /// Zet het item vast aan het holdPoint van de speler.
+    /// Player is persistent, dus het item reist als child mee tussen scenes.
+    /// </summary>
+    public void PickUp(Transform parent, Vector3 localPos, Vector3 localEuler)
     {
-        // stop beweging
+        // Altijd eerst de beweging stoppen...
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        // fysica uit tijdens vasthouden
+        // ...dán pas kinematic zetten (anders krijg je de warning).
         rb.isKinematic = true;
         col.enabled = false;
 
-        // aan HoldPoint hangen met gewenste offset/rotatie
+        // Als child aan het holdPoint hangen.
         transform.SetParent(parent);
-        transform.localPosition = localPosition;
+        transform.localPosition = localPos;
         transform.localRotation = Quaternion.Euler(localEuler);
     }
 
-    public void Drop(Vector3 worldPos, Vector3 initialImpulse)
+    /// <summary>
+    /// Laat het item los op worldPos en geef optioneel een duwtje.
+    /// </summary>
+    public void Drop(Vector3 worldPos, Vector3 impulse)
     {
-        transform.SetParent(null);
         transform.position = worldPos;
 
-        // fysica weer aan
         rb.isKinematic = false;
         col.enabled = true;
 
-        if (initialImpulse != Vector3.zero)
-            rb.AddForce(initialImpulse, ForceMode.Impulse);
+        if (impulse.sqrMagnitude > 0f)
+            rb.AddForce(impulse, ForceMode.Impulse);
     }
 }

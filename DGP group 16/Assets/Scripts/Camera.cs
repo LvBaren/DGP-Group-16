@@ -1,41 +1,86 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class CameraFollow : MonoBehaviour
+public class Camera : MonoBehaviour
 {
-    public Transform player;   // Assign your player object here
-    public Vector3 offset;     // Adjust to position camera behind/above the player
-    public float smoothSpeed = 5f;  // Controls how smoothly the camera follows
-
+    [Header("Volgdoel (Player)")]
+    public Transform player;   
     private CapsuleCollider playerCollider;
 
-    void Start()
+    [Header("Camera instellingen")]
+    public Vector3 offset = new Vector3(0f, 2f, -7.75f);
+    public float smoothSpeed = 5f;  
+
+    private float initialZ;
+    private static Camera instance;
+
+    void Awake()
     {
-        if (player != null)
+        // ✅ Zorg dat er maar één camera blijft bestaan
+        if (instance != null && instance != this)
         {
-            playerCollider = player.GetComponent<CapsuleCollider>();
-            transform.position = GetTargetPosition() + offset;
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject); // camera blijft bestaan tussen scenes
+
+        initialZ = transform.position.z;
+        TryFindPlayer();
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        TryFindPlayer();
+    }
+
+    void TryFindPlayer()
+    {
+        // Zoek automatisch het object met tag "Player"
+        if (player == null)
+        {
+            GameObject foundPlayer = GameObject.FindWithTag("Player");
+            if (foundPlayer != null)
+            {
+                player = foundPlayer.transform;
+                playerCollider = player.GetComponent<CapsuleCollider>();
+            }
         }
     }
 
     void LateUpdate()
     {
         if (player == null)
+        {
+            TryFindPlayer();
             return;
+        }
 
-        // Use midpoint of player collider instead of player transform origin
         Vector3 targetPos = GetTargetPosition() + offset;
+
+        // Houd de Z-positie constant (vaste diepte)
+        targetPos.z = initialZ;
+
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPos, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
-
-        // Optional: camera faces the player
-        // transform.LookAt(GetTargetPosition());
     }
 
     private Vector3 GetTargetPosition()
     {
         if (playerCollider != null)
         {
-            // Middle point = player position + (collider height * 0.5 * player's up direction)
+            // Gebruik midden van de collider voor vloeiende focus
             return player.position + player.up * (playerCollider.height * 0.5f);
         }
 

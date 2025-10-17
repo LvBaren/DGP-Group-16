@@ -1,19 +1,20 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerPickup : MonoBehaviour
+public class PlayerPickUp : MonoBehaviour
 {
     [Header("Vasthouden")]
-    public Transform holdPoint;              // sleep je HoldPoint hierheen
-    public Vector3 holdOffset = Vector3.zero;// bv. (0, 0, 0)
-    public Vector3 holdRotation = Vector3.zero; // bv. (0, 90, 0) om 'm te draaien
+    public Transform holdPoint;                          // sleep je HoldPoint hierheen
+    public Vector3 holdOffset   = new Vector3(0f, 0.2f, 0.6f);
+    public Vector3 holdRotation = new Vector3(0f, 90f, 0f);
 
-    [Header("Oppak-instellingen")]
-    public float pickRadius = 0.9f;          // hoe ver je reikt
-    public LayerMask pickupMask;             // zet op je 'Pickup' layer (of Everything)
+    [Header("Oppakken")]
+    public float pickRadius = 0.9f;
+    public LayerMask pickupMask;                         // zet tijdelijk op Everything als test
 
     [Header("Droppen")]
-    public float dropForward = 0.4f;         // zet 'm net voor je neer
-    public float dropImpulse = 0.0f;         // mini-throw (0 = geen)
+    public float dropForward = 0.4f;
+    public float dropImpulse = 0f;
 
     private PickupItem carried;
 
@@ -23,51 +24,54 @@ public class PlayerPickup : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D)) Drop();
     }
 
-    void TryPickup()
+    private void TryPickup()
     {
         if (carried != null || holdPoint == null) return;
 
-        // Zoek dichtstbijzijnde oppakbare collider
+        // Zoek dichtstbijzijnde oppakbare collider rond het holdPoint
         Collider[] hits = Physics.OverlapSphere(holdPoint.position, pickRadius, pickupMask);
-        PickupItem best = null;
-        float bestDist = float.MaxValue;
+        PickupItem best = null; float bestDist = float.MaxValue;
 
         foreach (var h in hits)
         {
             var item = h.GetComponent<PickupItem>();
-            if (item == null) continue;
+            if (!item) continue;
 
-            float d = Vector3.SqrMagnitude(h.transform.position - holdPoint.position);
-            if (d < bestDist)
-            {
-                best = item;
-                bestDist = d;
-            }
+            float d = (h.transform.position - holdPoint.position).sqrMagnitude;
+            if (d < bestDist) { best = item; bestDist = d; }
         }
 
         if (best == null) return;
 
         carried = best;
-        carried.PickUp(holdPoint, holdOffset, holdRotation);
+        carried.PickUp(holdPoint, holdOffset, holdRotation); // parent aan persistent Player
     }
 
     public void Drop()
     {
         if (carried == null) return;
 
-        // positie net voor het spookje
-        Vector3 dropPos = holdPoint.position + holdPoint.forward * dropForward;
+        // 1) EERST loskoppelen zodat het een root-obj wordt
+        carried.transform.SetParent(null);
 
-        // kleine impuls naar voren (optioneel)
+        // 2) DAN naar de actieve scene verplaatsen (lost "not a root in a scene" op)
+        Scene active = SceneManager.GetActiveScene();
+        SceneManager.MoveGameObjectToScene(carried.gameObject, active);
+
+        // 3) Drop-positie/impuls bepalen
+        Vector3 dropPos = holdPoint.position + holdPoint.forward * dropForward;
         Vector3 impulse = holdPoint.forward * dropImpulse;
 
+        // 4) Physics weer aan en klaar
         carried.Drop(dropPos, impulse);
+
+        // 5) Player draagt niets meer
         carried = null;
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (holdPoint == null) return;
+        if (!holdPoint) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(holdPoint.position, pickRadius);
     }

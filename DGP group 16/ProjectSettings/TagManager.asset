@@ -10,6 +10,7 @@ TagManager:
   - Test player
   - Pickable
   - Dropzone
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
