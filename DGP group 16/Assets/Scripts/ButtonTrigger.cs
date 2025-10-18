@@ -12,6 +12,11 @@ public class ButtonTrigger : MonoBehaviour
     public float pressDepth = 0.1f;
     public float pressSpeed = 5f;
 
+    [Header("Visual Feedback")]
+    public Renderer buttonRenderer;     // Renderer van de knop
+    public Material defaultMaterial;    // Normale kleur
+    public Material pressedMaterial;    // Kleur bij indrukken
+
     private Vector3 unpressedPosition;
     private Vector3 pressedPosition;
     private bool isPressed = false;
@@ -27,6 +32,10 @@ public class ButtonTrigger : MonoBehaviour
         // Zorg dat de NextLevelPlane standaard uit staat
         if (nextLevelPlane != null)
             nextLevelPlane.SetActive(false);
+
+        // Stel standaardmateriaal in
+        if (buttonRenderer != null && defaultMaterial != null)
+            buttonRenderer.material = defaultMaterial;
     }
 
     void Update()
@@ -43,6 +52,10 @@ public class ButtonTrigger : MonoBehaviour
         if (other.CompareTag("Player") && !isPressed)
         {
             isPressed = true;
+
+            // Visuele feedback
+            if (buttonRenderer != null && pressedMaterial != null)
+                buttonRenderer.material = pressedMaterial;
 
             // Meld aan de manager dat deze knop is geactiveerd
             if (buttonManager != null)
@@ -61,5 +74,9 @@ public class ButtonTrigger : MonoBehaviour
         // Deactiveer de NextLevelPlane als deze knop wordt uitgeschakeld
         if (nextLevelPlane != null)
             nextLevelPlane.SetActive(false);
+
+        // Zet het materiaal terug naar de standaardkleur
+        if (buttonRenderer != null && defaultMaterial != null)
+            buttonRenderer.material = defaultMaterial;
     }
 }
