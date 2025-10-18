@@ -3744,6 +3744,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bd22e250bed46228ed3fbbe066e78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  holdOffset: {x: 0, y: 0.2, z: 0.5}
+  holdRotation: {x: 0, y: 0, z: 0}
+  carryBetweenScenes: 1
+  notifyGearSystem: 0
+  startInSocket: 0
+  startSocket: {fileID: 0}
+  systemController: {fileID: 0}
+  isMountedInSocket: 0
 --- !u!65 &1592508428
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4602,6 +4610,7 @@ GameObject:
   - component: {fileID: 2119525548}
   - component: {fileID: 2119525547}
   - component: {fileID: 2119525546}
+  - component: {fileID: 2119525550}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -4631,7 +4640,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119525544}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e33b26c76c1b9407e8a9ec84e962fe77, type: 3}
   m_Name: 
@@ -4742,6 +4751,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &2119525550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119525544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c84c29aefffc742b129d04ceb23361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraTest
+  player: {fileID: 0}
+  offset: {x: 0, y: 0, z: -5}
+  smoothSpeed: 5
 --- !u!1 &2142477997
 GameObject:
   m_ObjectHideFlags: 0
