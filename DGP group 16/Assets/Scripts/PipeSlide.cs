@@ -4,17 +4,24 @@ using System.Collections;
 public class PipeSlide : MonoBehaviour
 {
     [Header("Slide Settings")]
-    public Transform exitPoint;     // waar de speler uitkomt
-    public float slideForce = 2f;  // kracht waarmee speler vooruit wordt geduwd
-    public float maxSpeed = 14f;    // maximale snelheid tijdens het glijden
+    public Transform exitPoint;      // Waar de speler uitkomt
+    public float slideForce = 2f;    // Kracht waarmee speler vooruit wordt geduwd
+    public float maxSpeed = 14f;     // Maximale snelheid tijdens het glijden
+
+    private bool isSliding = false;
+    private Rigidbody currentRb;
+    private MonoBehaviour[] disabledScripts;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isSliding) return; // voorkom dubbele triggers
+
         if (other.CompareTag("Player"))
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
             {
+                currentRb = rb;
                 StartCoroutine(SlideThroughPipe(rb));
             }
         }
@@ -22,18 +29,18 @@ public class PipeSlide : MonoBehaviour
 
     private IEnumerator SlideThroughPipe(Rigidbody rb)
     {
-        // Gravity aan laten voor een realistisch gevoel
+        isSliding = true;
         rb.useGravity = true;
 
-        // Schakel tijdelijk andere scripts uit (zoals movement)
-        MonoBehaviour[] allScripts = rb.GetComponents<MonoBehaviour>();
-        foreach (var script in allScripts)
+        // Schakel tijdelijk movement-scripts uit
+        disabledScripts = rb.GetComponents<MonoBehaviour>();
+        foreach (var script in disabledScripts)
         {
             if (script.enabled && script != this)
                 script.enabled = false;
         }
 
-        // Zolang speler niet bij de uitgang is, duw hem richting de uitgang
+        // Blijf duwen tot bij uitgang
         while (Vector3.Distance(rb.position, exitPoint.position) > 1f)
         {
             Vector3 direction = (exitPoint.position - rb.position).normalized;
@@ -44,11 +51,35 @@ public class PipeSlide : MonoBehaviour
             yield return null;
         }
 
-        // Herstel besturing na glijden
-        foreach (var script in allScripts)
+        // ? Herstel alle scripts veilig
+        RestorePlayerScripts();
+
+        isSliding = false;
+    }
+
+    private void OnDisable()
+    {
+        // ? Als dit script verdwijnt (bijv. scene load), herstel de player ook
+        RestorePlayerScripts();
+    }
+
+    private void OnDestroy()
+    {
+        // ? Extra failsafe voor zekerheid
+        RestorePlayerScripts();
+    }
+
+    private void RestorePlayerScripts()
+    {
+        if (disabledScripts != null)
         {
-            if (script != this)
-                script.enabled = true;
+            foreach (var script in disabledScripts)
+            {
+                if (script != null)
+                    script.enabled = true;
+            }
+
+            disabledScripts = null;
         }
     }
 }

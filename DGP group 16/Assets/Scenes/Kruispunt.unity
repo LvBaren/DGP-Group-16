@@ -1086,6 +1086,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipes_With_Platform3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8670118572f9204aad31521e37d5070, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 2482713826968322067, guid: b8670118572f9204aad31521e37d5070, type: 3}
       propertyPath: m_Name
       value: Pipe1
@@ -2389,7 +2393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &820258048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5409,8 +5413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PipeSlide
   exitPoint: {fileID: 1727645874}
-  slideForce: 2
-  maxSpeed: 16
+  slideForce: 3
+  maxSpeed: 20
 --- !u!64 &1501011167
 MeshCollider:
   m_ObjectHideFlags: 0
