@@ -32,8 +32,20 @@ public class GearSystemController : MonoBehaviour
     // Accumulator voor de vloeiende rotatie zodat we geen sprong krijgen bij mode-wissel.
     private float smoothAngleAccum = 0f;
 
+    //Bewaar startrotaties per tandwiel
+    private Quaternion[] startRotations;
+
     void Start()
     {
+        // Sla de startrotaties op zoals ze in Unity staan
+        if (gears != null && gears.Length > 0)
+        {
+            startRotations = new Quaternion[gears.Length];
+            for (int i = 0; i < gears.Length; i++)
+            {
+                startRotations[i] = gears[i] ? gears[i].localRotation : Quaternion.identity;
+            }
+        }
         // Startmodus bepalen op basis van aanwezigheid van rode gear in de socket
         // (PickupItem zet isMountedInSocket wanneer het in een socket klikt of eruit wordt gehaald).
         if (redGear != null && !redGear.isMountedInSocket)
@@ -75,7 +87,7 @@ public class GearSystemController : MonoBehaviour
             if (!g) continue;
 
             float a = (i % 2 == 0) ? baseAngle : -baseAngle;
-            g.localRotation = Quaternion.Euler(0f, 0f, a);
+            g.localRotation = startRotations[i] * Quaternion.Euler(0f, 0f, a);
         }
     }
 

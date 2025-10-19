@@ -1206,11 +1206,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &508974515 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6556632560497579929, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
-  m_PrefabInstance: {fileID: 161066019}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &524114235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,17 +1237,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   gears:
-  - {fileID: 943178668}
-  - {fileID: 1800872899}
-  - {fileID: 508974515}
-  - {fileID: 740561980}
-  - {fileID: 664637207}
-  - {fileID: 1680718446}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   triggerGear: {fileID: 1526797899}
   targetRotationSpeed: 160
   acceleration: 40
   wiggleAmplitude: 10
-  wiggleSpeed: 2
+  wiggleSpeed: 5
 --- !u!4 &524114237
 Transform:
   m_ObjectHideFlags: 0
@@ -1296,9 +1291,9 @@ MonoBehaviour:
   - {fileID: 664637211}
   redGear: {fileID: 1526797904}
   redGearSocket: {fileID: 611812790}
-  rotationSpeed: 10
-  angleAmplitude: 10
-  startsActive: 1
+  shockRotationSpeed: 7
+  shockAngleAmplitude: 10
+  smoothRotationSpeed: 40
 --- !u!1001 &529674400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1831,20 +1826,10 @@ Transform:
   - {fileID: 1149544903}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &664637207 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6556632560497579929, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
-  m_PrefabInstance: {fileID: 1022544465}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &664637211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5887900434135747875, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
   m_PrefabInstance: {fileID: 1022544465}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &740561980 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6556632560497579929, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
-  m_PrefabInstance: {fileID: 529674400}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &744523471
 GameObject:
@@ -2193,11 +2178,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921045539}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &943178668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6556632560497579929, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
-  m_PrefabInstance: {fileID: 295988383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1022544465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2444,7 +2424,7 @@ Transform:
   m_GameObject: {fileID: 1104081080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.2, y: -3.8, z: -13.5}
+  m_LocalPosition: {x: 12.2, y: -3.8, z: -11.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2581,7 +2561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
-  offset: {x: 0, y: 2, z: -7.75}
+  offset: {x: 0, y: 0, z: -5}
   smoothSpeed: 5
 --- !u!1 &1149544902
 GameObject:
@@ -3345,11 +3325,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
---- !u!1 &1680718446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6556632560497579929, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
-  m_PrefabInstance: {fileID: 1658145960}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1680718450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5887900434135747875, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
@@ -3519,11 +3494,6 @@ Transform:
   - {fileID: 1104081081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1800872899 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6556632560497579929, guid: 1876259d00cf5514f9ff17880f12fb6a, type: 3}
-  m_PrefabInstance: {fileID: 839428956}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1886435901
 GameObject:
   m_ObjectHideFlags: 0

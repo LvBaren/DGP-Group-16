@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
-  offset: {x: 0, y: 0, z: -7.75}
+  offset: {x: 0, y: 0, z: -5}
   smoothSpeed: 5
 --- !u!1 &470661138
 GameObject:
@@ -1250,7 +1250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &571408807
 MonoBehaviour:
   m_ObjectHideFlags: 0
