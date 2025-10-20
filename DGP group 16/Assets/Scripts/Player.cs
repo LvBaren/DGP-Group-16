@@ -16,13 +16,12 @@ public class Player : MonoBehaviour
     private CapsuleCollider capsule;
     private bool isGrounded;
 
-    private float growthDuration = 120f;   // 2 minutes
-    private float targetScaleMultiplier = 1.5f; // grow 1.5× original size
-    private static float growthTimer = 0f;
-    private Vector3 initialScale;
-    private float initialColliderHeight;
     private float rotationSpeed = 500; // How fast the character turns to the side their moving towards.
-    private Vector3 initialScaleSpookje;
+
+    private float fadeDuration = 120f;
+    private static float fadeTimer = 0f;
+    private Material spookjeMaterial;
+    private Color initialColor;
 
     private void Start()
     {
@@ -30,17 +29,25 @@ public class Player : MonoBehaviour
         rb.freezeRotation = true;
 
         capsule = GetComponent<CapsuleCollider>();
-        initialScale = transform.localScale;
-        initialColliderHeight = capsule.height;
 
-        initialScaleSpookje = spookje.localScale;
+        // Get materials to fade out player
+        Renderer rend = spookje.GetComponentInChildren<Renderer>();
+        if (rend != null)
+        {
+            spookjeMaterial = rend.material;
+            initialColor = spookjeMaterial.color;
+        } else
+        {
+            Debug.LogWarning("Player does not have a renderer");
+        }
+        
     }
 
     private void Update()
     {
         HandleMovement();
         HandleJump();
-        HandleGrowth();
+        HandleFade();
     }
 
     private void HandleMovement()
@@ -75,28 +82,23 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleGrowth()
+    private void HandleFade()
     {
-        if (growthTimer < growthDuration)
+        if (spookjeMaterial == null) return;
+
+        fadeTimer += Time.deltaTime;
+        float t = Mathf.Clamp01(fadeTimer / fadeDuration);
+
+        // Fade from 1 to 0
+        Color newColor = initialColor;
+        newColor.a = Mathf.Lerp(1f, 0f, t);
+        spookjeMaterial.color = newColor;
+
+        if (fadeTimer >= fadeDuration)
         {
-            growthTimer += Time.deltaTime;
-            float t = Mathf.Clamp01(growthTimer / growthDuration);
-
-            // Gradually scale up to 10× original
-            float scaleMultiplier = Mathf.Lerp(1f, targetScaleMultiplier, t);
-            transform.localScale = initialScale * scaleMultiplier;
-
-            // Adjust capsule collider height accordingly
-            float newHeight = Mathf.Lerp(initialColliderHeight, initialColliderHeight * targetScaleMultiplier, t);
-            capsule.height = newHeight;
-            capsule.center = new Vector3(0, newHeight / 2f, 0);
-
-            // Adjust visual size
-            spookje.localScale = initialScaleSpookje * scaleMultiplier;
-        }
-        else
-        {
+            // this probably has to change to a end-scene thing.
             SceneManager.LoadScene("Startscherm");
+            spookjeMaterial.color = initialColor;
         }
     }
 
