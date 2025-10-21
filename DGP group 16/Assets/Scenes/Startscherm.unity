@@ -3978,6 +3978,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3855335175272487014, guid: 1de1bc5936543484baacee3ad583044d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ec738e3dfb1339746a80eebceb0b5a3f, type: 2}
+    - target: {fileID: -3372522033569347474, guid: 1de1bc5936543484baacee3ad583044d, type: 3}
+      propertyPath: m_Name
+      value: Body1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1de1bc5936543484baacee3ad583044d, type: 3}
       propertyPath: m_Name
       value: Spookje
