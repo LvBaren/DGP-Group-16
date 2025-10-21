@@ -1008,7 +1008,7 @@ Transform:
   m_GameObject: {fileID: 283230861}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -68.85, y: 41.14, z: -5.32}
+  m_LocalPosition: {x: -58.6, y: 41.14, z: -5.32}
   m_LocalScale: {x: 1, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1694,7 +1694,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1705,7 +1705,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347677155}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1763,7 +1763,7 @@ Transform:
   m_GameObject: {fileID: 347677155}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.08, y: 42.54, z: 1.54}
+  m_LocalPosition: {x: -18.08, y: 42.54, z: 2.25}
   m_LocalScale: {x: 1.29, y: 0.016680555, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3854,7 +3854,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830967589}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e33b26c76c1b9407e8a9ec84e962fe77, type: 3}
   m_Name: 
@@ -3972,7 +3972,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830967589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5c84c29aefffc742b129d04ceb23361, type: 3}
   m_Name: 
@@ -5932,7 +5932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf56f81bed71c59458b653c449d001e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.8
+      value: -26.550003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf56f81bed71c59458b653c449d001e3, type: 3}
       propertyPath: m_LocalPosition.y
