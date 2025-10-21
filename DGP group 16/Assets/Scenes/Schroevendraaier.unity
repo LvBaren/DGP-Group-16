@@ -4867,7 +4867,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 18a6bbe91f3fc7241bba5c9b1df3e3e7, type: 3}
       propertyPath: m_Name
-      value: Screwdriver_Cross (1)
+      value: itemScroevendraaier
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 18a6bbe91f3fc7241bba5c9b1df3e3e7, type: 3}
       propertyPath: m_Layer

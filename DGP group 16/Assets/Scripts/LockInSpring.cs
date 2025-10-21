@@ -1,0 +1,99 @@
+﻿using UnityEngine;
+
+public class CheckHeldItem : MonoBehaviour
+{
+    private string requiredItemName = "ItemSpring";  // item player must be holding
+
+    [Header("Objects to Change")]
+    public GameObject itemToChange1;  // Assign in Inspector
+    public GameObject itemToChange2;  // Assign in Inspector
+    public Material newMaterial;      // The material to apply to itemToChange1
+
+    private Transform playerHoldPoint;
+
+    void Start()
+    {
+        FindPlayerHoldPoint();
+    }
+
+    void FindPlayerHoldPoint()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            Transform hold = player.transform.Find("HoldPoint"); // must match actual name
+            if (hold != null)
+            {
+                playerHoldPoint = hold;
+                Debug.Log("Found player hold point!");
+            }
+            else
+            {
+                Debug.LogWarning("Player found, but no HoldPoint child!");
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        if (playerHoldPoint == null)
+            FindPlayerHoldPoint();
+
+        if (playerHoldPoint != null && playerHoldPoint.childCount > 0)
+        {
+            Transform heldItem = playerHoldPoint.GetChild(0);
+
+            if (heldItem.name == requiredItemName)
+            {
+                Debug.Log($"Player collided while holding {requiredItemName}!");
+                Destroy(heldItem.gameObject);
+
+                // --- Change item 1's material ---
+                if (itemToChange1 != null && newMaterial != null)
+                {
+                    Renderer rend = itemToChange1.GetComponent<Renderer>();
+                    if (rend != null)
+                    {
+                        rend.material = newMaterial;
+                        Debug.Log("Changed material on item 1!");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Item 1 has no Renderer component!");
+                    }
+                }
+
+                // --- Enable mesh collider on item 2 ---
+                if (itemToChange2 != null)
+                {
+                    MeshCollider meshCol = itemToChange2.GetComponent<MeshCollider>();
+                    Renderer rend = itemToChange2.GetComponent<Renderer>();
+                    if (meshCol != null && rend != null)
+                    {
+                        meshCol.enabled = true;
+                        rend.material = newMaterial;
+                        Debug.Log("Enabled MeshCollider on item 2!");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Item 2 has no MeshCollider component!");
+                    }
+                }
+
+                // Optional: disable this trigger after activation
+                // gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.Log($"Player collided holding {heldItem.name}, not {requiredItemName}.");
+            }
+        }
+        else
+        {
+            Debug.Log("Player collided but isn’t holding anything.");
+        }
+    }
+}

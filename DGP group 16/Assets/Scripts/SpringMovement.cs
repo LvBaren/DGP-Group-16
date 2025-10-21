@@ -13,8 +13,6 @@ public class SpringMovement : MonoBehaviour
     private Collider myCollider;
     private Transform visualSpring;
     private float rotationSpeed;
-    private float verticalVelocity;
-    private bool isGrounded;
 
     void Start()
     {
