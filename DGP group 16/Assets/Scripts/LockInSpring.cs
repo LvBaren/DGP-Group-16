@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 
-public class CheckHeldItem : MonoBehaviour
+public class LockInSpring : MonoBehaviour
 {
     private string requiredItemName = "ItemSpring";  // item player must be holding
 
     [Header("Objects to Change")]
-    public GameObject itemToChange1;  // Assign in Inspector
-    public GameObject itemToChange2;  // Assign in Inspector
+    public GameObject itemToChange1;  // Assign eind veer
+    public GameObject itemToChange2;  // Assign eind veer groot
     public Material newMaterial;      // The material to apply to itemToChange1
+    public GameObject frontGlass; // Assign front glass
+    public GameObject schroef1;
+    public GameObject schroef2;
+    public GameObject schroef3;
+    public GameObject schroef4;
+
 
     private Transform playerHoldPoint;
 
@@ -83,8 +89,12 @@ public class CheckHeldItem : MonoBehaviour
                     }
                 }
 
-                // Optional: disable this trigger after activation
-                // gameObject.SetActive(false);
+                // Activate front glass and schoef 1-4
+                frontGlass.SetActive(true);
+                schroef1.SetActive(true);
+                schroef2.SetActive(true);
+                schroef3.SetActive(true);
+                schroef4.SetActive(true);
             }
             else
             {

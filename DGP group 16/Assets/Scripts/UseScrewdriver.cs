@@ -6,9 +6,9 @@ public class UseScrewdriver : MonoBehaviour
     private string requiredItemName = "itemScroevendraaier";  // item player must be holding
 
     [Header("Objects to Change")]
-    public GameObject itemToChange1;  // Assign in Inspector
-    public GameObject itemToChange2;  // Assign in Inspector
-    public MonoBehaviour scriptNameToEnable;  // The name of the script on itemToChange2
+    public GameObject springBoxPlane;  // De glas van de box van de springveer
+    public GameObject springPickupItem;  // Springveer voor pickup
+    public GameObject springCoverup; // Springveer not pickupable
 
     private Transform playerHoldPoint;
     private float moveSpeed = 10f;
@@ -54,35 +54,23 @@ public class UseScrewdriver : MonoBehaviour
                 Debug.Log($"Player collided while holding {requiredItemName}!");
                 Destroy(heldItem.gameObject);
 
-                // Enable pickup
-                if (scriptNameToEnable != null)
+                // Disable normal spring
+                if (springCoverup != null)
                 {
-                    scriptNameToEnable.enabled = true;
+                    springCoverup.SetActive(false);
                 }
 
-                // fly out spawnerbox
-                if (itemToChange1 != null)
+                // Enable spring pickup
+                if (springPickupItem != null)
                 {
-                    MeshCollider meshCol = itemToChange1.GetComponent<MeshCollider>();
-                    if (meshCol != null)
-                    {
-                        meshCol.enabled = false;
-                        itemToChange1.transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
-                        if (itemToChange1.transform.position.y > yLimit)
-                        {
-                            Destroy(itemToChange1.gameObject);
-                        }
-                    }
-                    
-                    // --- Enable another script on item 2 ---
-                    if (scriptNameToEnable != null)
-                    {
-                       
-                    }
+                    springPickupItem.SetActive(true);
                 }
 
-                // Optional: disable this trigger after activation
-                // gameObject.SetActive(false);
+                    // Remove glass of box
+                    if (springBoxPlane != null)
+                {
+                    springBoxPlane.SetActive(false);
+                }
             }
             else
             {
