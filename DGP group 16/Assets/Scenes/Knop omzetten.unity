@@ -714,7 +714,6 @@ GameObject:
   - component: {fileID: 448915803}
   - component: {fileID: 448915802}
   - component: {fileID: 448915801}
-  - component: {fileID: 448915800}
   - component: {fileID: 448915804}
   m_Layer: 0
   m_Name: Camera
@@ -738,21 +737,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1426040538}
   m_LocalEulerAnglesHint: {x: 180, y: 180, z: 180}
---- !u!114 &448915800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448915798}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33b26c76c1b9407e8a9ec84e962fe77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  player: {fileID: 0}
-  offset: {x: 0, y: 0, z: -5}
-  smoothSpeed: 5
 --- !u!114 &448915801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2555,7 +2539,7 @@ Transform:
   m_GameObject: {fileID: 1116228063}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.02757001, y: 8.66, z: -9.44}
+  m_LocalPosition: {x: 0.02757001, y: 8.66, z: -10.47}
   m_LocalScale: {x: 15, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2617,7 +2601,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2628,7 +2612,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171236594}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2686,7 +2670,7 @@ Transform:
   m_GameObject: {fileID: 1171236594}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -0.02, z: -4.45}
+  m_LocalPosition: {x: -1, y: 1.02, z: -5.76}
   m_LocalScale: {x: 1.29, y: 0.016680555, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2746,7 +2730,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 1, z: 10}
+  m_Size: {x: 10, y: 0.1, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &1397767356
 MeshCollider:
@@ -3223,7 +3207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d72d58f63bf3ba4698fea14a8a68225, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.8
+      value: -1.96
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d72d58f63bf3ba4698fea14a8a68225, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3497,7 +3481,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 1, z: 10}
+  m_Size: {x: 10, y: 0.1, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &1914027566
 MeshCollider:
