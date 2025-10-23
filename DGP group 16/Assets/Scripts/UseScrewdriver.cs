@@ -14,10 +14,18 @@ public class UseScrewdriver : MonoBehaviour
     private float moveSpeed = 10f;
     private float yLimit = 10f;
 
+    private const string ScrewdriverKey = "ScrewdriverPlaced";
+
     void Start()
     {
         FindPlayerHoldPoint();
-    }
+        if (PlayerPrefs.GetInt(ScrewdriverKey, 0) == 1)
+        {
+            springCoverup.SetActive(false);
+            springPickupItem.SetActive(true);
+            springBoxPlane.SetActive(false);
+        }
+        }
 
     void FindPlayerHoldPoint()
     {
@@ -71,6 +79,9 @@ public class UseScrewdriver : MonoBehaviour
                 {
                     springBoxPlane.SetActive(false);
                 }
+
+                PlayerPrefs.SetInt(ScrewdriverKey, 1);
+                PlayerPrefs.Save();
             }
             else
             {

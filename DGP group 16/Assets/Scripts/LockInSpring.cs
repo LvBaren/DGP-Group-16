@@ -16,10 +16,27 @@ public class LockInSpring : MonoBehaviour
 
 
     private Transform playerHoldPoint;
+    private const string SpringKey = "SpringPlaced";
 
     void Start()
     {
         FindPlayerHoldPoint();
+
+        // Check if Spring was already placed before
+        if (PlayerPrefs.GetInt(SpringKey, 0) == 1)
+        {
+            Renderer rend = itemToChange1.GetComponent<Renderer>();
+            rend.material = newMaterial;
+            MeshCollider meshCol = itemToChange2.GetComponent<MeshCollider>();
+            Renderer rend2 = itemToChange2.GetComponent<Renderer>();
+            meshCol.enabled = true;
+            rend2.material = newMaterial;
+            frontGlass.SetActive(true);
+            schroef1.SetActive(true);
+            schroef2.SetActive(true);
+            schroef3.SetActive(true);
+            schroef4.SetActive(true);
+        }
     }
 
     void FindPlayerHoldPoint()
@@ -95,6 +112,8 @@ public class LockInSpring : MonoBehaviour
                 schroef2.SetActive(true);
                 schroef3.SetActive(true);
                 schroef4.SetActive(true);
+                PlayerPrefs.SetInt(SpringKey, 1);
+                PlayerPrefs.Save();
             }
             else
             {
