@@ -1,18 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-/// Eén Player over alle scenes. Voorkomt duplicaten en verplaatst
-/// (optioneel) naar een spawnpunt met tag "PlayerSpawn" per scene.
+[RequireComponent(typeof(Rigidbody))]
 public class PersistentPlayer : MonoBehaviour
 {
     private static PersistentPlayer _instance;
+    private Rigidbody rb;
 
     void Awake()
     {
-        if (_instance != null && _instance != this) { Destroy(gameObject); return; }
-        _instance = this;
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        _instance = this;
         DontDestroyOnLoad(gameObject);
+        rb = GetComponent<Rigidbody>();
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -24,13 +31,32 @@ public class PersistentPlayer : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Optioneel: plaats de speler op een spawnpunt als dat bestaat.
+        // Start coroutine om spawn te verwerken
+        StartCoroutine(SpawnAtPoint());
+    }
+
+    private IEnumerator SpawnAtPoint()
+    {
+        // Wacht tot einde van frame, zodat colliders en physics klaar zijn
+        yield return new WaitForEndOfFrame();
+
         var spawn = GameObject.FindWithTag("PlayerSpawn");
         if (spawn != null)
         {
+            // Interpolatie tijdelijk uit
+            var oldInterpolation = rb.interpolation;
+            rb.interpolation = RigidbodyInterpolation.None;
+
+            // Verplaats speler direct naar spawn
             transform.position = spawn.transform.position;
-            // (optioneel) rotatie ook meenemen:
-            // transform.rotation = spawn.transform.rotation;
+            // transform.rotation = spawn.transform.rotation; // optioneel
+
+            // Reset physics
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            // Zet interpolatie terug
+            rb.interpolation = oldInterpolation;
         }
     }
 }

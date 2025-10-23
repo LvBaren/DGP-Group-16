@@ -1,26 +1,29 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Counterweight : MonoBehaviour
 {
-    [SerializeField]
-    float speed = 5f;
-    
-    [SerializeField]
-    float height = 0.5f;
+    [Header("Beweging instellingen")]
+    [SerializeField] private float speed = 1.5f;
+    [SerializeField] private float height = 0.5f;
 
-    Vector3 pos;
-
+    private Rigidbody rb;
+    private Vector3 startPos;
     private void Start()
     {
-        pos = transform.position;
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;              // we besturen hem zelf
+        rb.interpolation = RigidbodyInterpolation.Interpolate; // vloeiender visueel
+        startPos = transform.position;
     }
-    void Update()
-    {
 
-        //calculate what the new Y position will be
-        float newY = Mathf.Sin(Time.time * speed) * height + pos.y;
-        //set the object’s Y to the new calculated Y
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+    private void FixedUpdate()
+    {
+        // Gebruik fixedTime voor vloeiende beweging in de physics-loop
+        float newY = Mathf.Sin(Time.fixedTime * speed) * height + startPos.y;
+        Vector3 newPos = new Vector3(startPos.x, newY, startPos.z);
+
+        rb.MovePosition(newPos);
     }
 }
 
