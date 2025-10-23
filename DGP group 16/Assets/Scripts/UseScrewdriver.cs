@@ -19,12 +19,12 @@ public class UseScrewdriver : MonoBehaviour
     void Start()
     {
         FindPlayerHoldPoint();
-        if (PlayerPrefs.GetInt(ScrewdriverKey, 0) == 1)
-        {
-            springCoverup.SetActive(false);
-            springPickupItem.SetActive(true);
-            springBoxPlane.SetActive(false);
-        }
+        //if (PlayerPrefs.GetInt(ScrewdriverKey, 0) == 1)
+        //{
+        //    springCoverup.SetActive(false);
+        //    springPickupItem.SetActive(true);
+        //    springBoxPlane.SetActive(false);
+        //}
         }
 
     void FindPlayerHoldPoint()
