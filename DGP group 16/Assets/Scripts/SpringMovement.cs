@@ -4,7 +4,7 @@
 public class SpringMovement : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float moveSpeed = 7f;
+    private float moveSpeed = 4f;
     [SerializeField] private float gravity = -20f;
     [SerializeField] private float radius = 0.5f;
     [SerializeField] private string wallTag = "Wall";
