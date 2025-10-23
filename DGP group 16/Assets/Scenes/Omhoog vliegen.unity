@@ -5409,6 +5409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Primitive_Helix_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b77737c16de0c7e489f25a56a30b93bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b77737c16de0c7e489f25a56a30b93bd, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -6954,7 +6958,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 70cca0dcba9c04fb4aa3ef6fbbfc1f6c, type: 2}
+  - {fileID: 2100000, guid: 73a05cd5e3544704eb84dc5a212f019c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6994,7 +6998,7 @@ Transform:
   m_GameObject: {fileID: 1514852406}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -9.3, y: 1.7999995, z: -16.56}
+  m_LocalPosition: {x: -9.52, y: 1.7999995, z: -16.56}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []

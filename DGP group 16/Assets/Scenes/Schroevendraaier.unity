@@ -449,6 +449,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5357291655528977836, guid: 74ec0c569f1dd2744923b5ac0a7f687f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 558835408}
+    - targetCorrespondingSourceObject: {fileID: 5357291655528977836, guid: 74ec0c569f1dd2744923b5ac0a7f687f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1843433474}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5357291655529466252, guid: 74ec0c569f1dd2744923b5ac0a7f687f, type: 3}
       insertIndex: -1
@@ -993,7 +996,7 @@ Transform:
   m_GameObject: {fileID: 558835407}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9999976, z: 0.0021704135, w: 0}
-  m_LocalPosition: {x: 0.0238, y: 0.0091, z: 0.0478}
+  m_LocalPosition: {x: 0.0238, y: 0.00478, z: 0.04778}
   m_LocalScale: {x: 0.0020582296, y: 0.002058229, z: 0.0016465834}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1058,7 +1061,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 70cca0dcba9c04fb4aa3ef6fbbfc1f6c, type: 2}
+  - {fileID: 2100000, guid: 89d82786f34e9264fb5b03d4d0070a12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4765,6 +4768,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800328903}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1843433473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843433474}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1843433474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843433473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.70863986, y: -0, z: -0, w: 0.70557046}
+  m_LocalPosition: {x: -0.36115694, y: 0.14167485, z: 0.0013877405}
+  m_LocalScale: {x: 0.008232916, y: 0.008232914, z: 0.008232914}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 137898830}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855303624
 GameObject:
   m_ObjectHideFlags: 0
