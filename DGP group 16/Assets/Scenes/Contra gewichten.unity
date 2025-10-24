@@ -7258,7 +7258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Counterweight
   speed: 0.7
-  height: -17
+  height: 17
 --- !u!64 &1567591684
 MeshCollider:
   m_ObjectHideFlags: 0
