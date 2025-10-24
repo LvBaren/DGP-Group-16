@@ -4742,7 +4742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751c1b85c2cf54ba19ecda08374096c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneName: Bel
+  sceneName: Veren
 --- !u!64 &1026426839
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5252,31 +5252,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.038201768, y: 0.05996353, z: 0.09796615}
   m_Center: {x: -0.003098694, y: 0.0014717177, z: 0.036518667}
---- !u!1 &1079067568 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -6935687079284805244, guid: 0a489ac178c0a41bbaae9001674ff7a5, type: 3}
-  m_PrefabInstance: {fileID: 1079067564}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1079067569 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -7594736381303323828, guid: 0a489ac178c0a41bbaae9001674ff7a5, type: 3}
-  m_PrefabInstance: {fileID: 1079067564}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1079067570 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -2955562502506580004, guid: 0a489ac178c0a41bbaae9001674ff7a5, type: 3}
-  m_PrefabInstance: {fileID: 1079067564}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1079067571 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -4845419198383733991, guid: 0a489ac178c0a41bbaae9001674ff7a5, type: 3}
-  m_PrefabInstance: {fileID: 1079067564}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1079067572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9175552907236278165, guid: 0a489ac178c0a41bbaae9001674ff7a5, type: 3}
-  m_PrefabInstance: {fileID: 1079067564}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1120509242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6283,11 +6258,6 @@ MonoBehaviour:
   itemToChange1: {fileID: 5331558315342226107}
   itemToChange2: {fileID: 1416457369}
   newMaterial: {fileID: 2100000, guid: 4a43fea3c466b1a4c94735ecb32c9875, type: 2}
-  frontGlass: {fileID: 1079067568}
-  schroef1: {fileID: 1079067572}
-  schroef2: {fileID: 1079067571}
-  schroef3: {fileID: 1079067570}
-  schroef4: {fileID: 1079067569}
 --- !u!4 &1366402947
 Transform:
   m_ObjectHideFlags: 0
@@ -7038,7 +7008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b77737c16de0c7e489f25a56a30b93bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.2
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b77737c16de0c7e489f25a56a30b93bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7958,11 +7928,6 @@ MonoBehaviour:
   itemToChange1: {fileID: 5331558315342226107}
   itemToChange2: {fileID: 1416457369}
   newMaterial: {fileID: 2100000, guid: 4a43fea3c466b1a4c94735ecb32c9875, type: 2}
-  frontGlass: {fileID: 1079067568}
-  schroef1: {fileID: 1079067572}
-  schroef2: {fileID: 1079067571}
-  schroef3: {fileID: 1079067570}
-  schroef4: {fileID: 1079067569}
 --- !u!1 &1768472190
 GameObject:
   m_ObjectHideFlags: 0

@@ -969,7 +969,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
       propertyPath: m_Name
-      value: SM_Bld_House_Door_01 (1)
+      value: Door 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
       propertyPath: m_LocalScale.x
@@ -1614,7 +1614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 18a6bbe91f3fc7241bba5c9b1df3e3e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.52
+      value: -48.93
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 18a6bbe91f3fc7241bba5c9b1df3e3e7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3814,7 +3814,7 @@ Transform:
   m_GameObject: {fileID: 773896493}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -7.4000006, y: -0.10595989, z: 15.25321}
+  m_LocalPosition: {x: -0.8100004, y: -0.10595989, z: 15.25321}
   m_LocalScale: {x: 0.5, y: 0.49999994, z: 0.24999997}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4229,7 +4229,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
       propertyPath: m_Name
-      value: SM_Bld_House_Door_01 (2)
+      value: Door 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
       propertyPath: m_LocalScale.x
@@ -5380,7 +5380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a65332b427044bff966810b989c2a1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -51.9
+      value: -45.31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a65332b427044bff966810b989c2a1e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5913,7 +5913,7 @@ Transform:
   m_GameObject: {fileID: 1182667990}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 4.88, y: -0.10595989, z: 15.25321}
+  m_LocalPosition: {x: 11.47, y: -0.10595989, z: 15.25321}
   m_LocalScale: {x: 0.49999982, y: 0.49999994, z: 0.24999997}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7465,7 +7465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 7
-  jumpForce: 5
   presetManager: {fileID: 0}
   spookje: {fileID: 1963691828}
 --- !u!4 &1603750905
@@ -7805,7 +7804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751c1b85c2cf54ba19ecda08374096c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneName: Veren
+  sceneName: Bel
 --- !u!64 &1625303361
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8417,7 +8416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d029396242c2541e98d00a282d17f5d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.07
+      value: -33.48
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d029396242c2541e98d00a282d17f5d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9969,7 +9968,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 7
-  jumpForce: 5
   presetManager: {fileID: 0}
   spookje: {fileID: 1912951795}
 --- !u!4 &2064602401
@@ -9981,7 +9979,7 @@ Transform:
   m_GameObject: {fileID: 2064602393}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.14, y: 2.36, z: -0.53}
+  m_LocalPosition: {x: -39.52, y: 2.36, z: -0.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -10018,7 +10016,7 @@ Transform:
   m_GameObject: {fileID: 2087661622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.33, y: -3.5, z: -12.8}
+  m_LocalPosition: {x: -40.97, y: -3.5, z: -12.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

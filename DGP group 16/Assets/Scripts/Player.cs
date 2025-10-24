@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 7f;
-    public float jumpForce = 5f;
+    private float jumpForce = 6f;
     public CameraPresetManager presetManager;
     [SerializeField] private Transform spookje;
 
