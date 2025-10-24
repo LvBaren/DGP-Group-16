@@ -12,6 +12,8 @@ TagManager:
   - Dropzone
   - PlayerSpawn
   - Wall
+  - SpringExit
+  - SpringSpawn
   layers:
   - Default
   - TransparentFX

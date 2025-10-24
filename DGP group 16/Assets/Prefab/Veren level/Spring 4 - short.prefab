@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe474792da174849a18b3bfec30065d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 7
+  moveSpeed: 4
   gravity: -9.81
   radius: 0.5
   wallTag: Wall

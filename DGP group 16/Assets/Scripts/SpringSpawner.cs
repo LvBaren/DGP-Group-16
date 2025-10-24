@@ -41,7 +41,7 @@ public class SpringSpawner : MonoBehaviour
             // Pick a random Z position specific to this object
             float randomZ = Random.Range(obj.minZ, obj.maxZ);
             float yPosition = obj.onY;
-            Vector3 spawnPos = new Vector3(spawnOrigin.position.x, yPosition, randomZ);
+            Vector3 spawnPos = new Vector3(spawnOrigin.position.x, spawnOrigin.position.y, randomZ);
 
             // Spawn the object
             if (obj != null)

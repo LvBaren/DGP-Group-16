@@ -8,12 +8,6 @@ public class LockInSpring : MonoBehaviour
     public GameObject itemToChange1;  // Assign eind veer
     public GameObject itemToChange2;  // Assign eind veer groot
     public Material newMaterial;      // The material to apply to itemToChange1
-    public GameObject frontGlass; // Assign front glass
-    public GameObject schroef1;
-    public GameObject schroef2;
-    public GameObject schroef3;
-    public GameObject schroef4;
-
 
     private Transform playerHoldPoint;
     private const string SpringKey = "SpringPlaced";
@@ -31,11 +25,6 @@ public class LockInSpring : MonoBehaviour
         //    Renderer rend2 = itemToChange2.GetComponent<Renderer>();
         //    meshCol.enabled = true;
         //    rend2.material = newMaterial;
-        //    frontGlass.SetActive(true);
-        //    schroef1.SetActive(true);
-        //    schroef2.SetActive(true);
-        //    schroef3.SetActive(true);
-        //    schroef4.SetActive(true);
         //}
     }
 
@@ -105,13 +94,6 @@ public class LockInSpring : MonoBehaviour
                         Debug.LogWarning("Item 2 has no MeshCollider component!");
                     }
                 }
-
-                // Activate front glass and schoef 1-4
-                frontGlass.SetActive(true);
-                schroef1.SetActive(true);
-                schroef2.SetActive(true);
-                schroef3.SetActive(true);
-                schroef4.SetActive(true);
                 PlayerPrefs.SetInt(SpringKey, 1);
                 PlayerPrefs.Save();
             }

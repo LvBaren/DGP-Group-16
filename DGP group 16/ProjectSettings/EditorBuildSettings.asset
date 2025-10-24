@@ -50,6 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Veren.unity
     guid: a78bb92dc8ce9406ca560c409436d138
+  - enabled: 1
+    path: Assets/Scenes/Omhoog vliegen2.unity
+    guid: 5c2ede36a971f0c4baf1261cb6e34ce0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
