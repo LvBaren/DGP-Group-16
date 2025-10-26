@@ -2175,8 +2175,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PipeSlide
   exitPoint: {fileID: 1712194413}
-  slideForce: 2
-  maxSpeed: 14
+  slideForce: 3
+  maxSpeed: 16
+  maxSlideTime: 5
 --- !u!64 &530948097
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2264,8 +2265,8 @@ Transform:
   m_GameObject: {fileID: 530948095}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0870008, y: 0, z: 0.28000006}
-  m_LocalScale: {x: 0.8, y: 1, z: 0.8}
+  m_LocalPosition: {x: 3.0870008, y: -1.2, z: 0.28000006}
+  m_LocalScale: {x: 1.4, y: 0.1, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1854884334}
@@ -5591,8 +5592,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PipeSlide
   exitPoint: {fileID: 2000192340}
-  slideForce: 2
-  maxSpeed: 14
+  slideForce: 3
+  maxSpeed: 16
+  maxSlideTime: 5
 --- !u!64 &1154592817
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5680,8 +5682,8 @@ Transform:
   m_GameObject: {fileID: 1154592815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5719998, y: 0, z: 0.28000006}
-  m_LocalScale: {x: 0.8, y: 1, z: 0.8}
+  m_LocalPosition: {x: -0.5719998, y: -1.2, z: 0.28000006}
+  m_LocalScale: {x: 1.4, y: 0.1, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2027956438}
@@ -7584,7 +7586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PipeSlide
   exitPoint: {fileID: 1727645874}
   slideForce: 3
-  maxSpeed: 20
+  maxSpeed: 16
+  maxSlideTime: 5
 --- !u!64 &1501011167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7672,8 +7675,8 @@ Transform:
   m_GameObject: {fileID: 1501011165}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4, y: 0, z: 0.28}
-  m_LocalScale: {x: 0.8, y: 1, z: 0.8}
+  m_LocalPosition: {x: -2.4, y: -1.2, z: 0.33}
+  m_LocalScale: {x: 1.4, y: 0.1, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 832180100}
@@ -8070,8 +8073,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PipeSlide
   exitPoint: {fileID: 1235051253}
-  slideForce: 2
-  maxSpeed: 14
+  slideForce: 3
+  maxSpeed: 16
+  maxSlideTime: 5
 --- !u!64 &1639694663
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8159,8 +8163,8 @@ Transform:
   m_GameObject: {fileID: 1639694661}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2640002, y: 0, z: 0.28000006}
-  m_LocalScale: {x: 0.8, y: 1, z: 0.8}
+  m_LocalPosition: {x: 1.2640002, y: -1.2, z: 0.28000006}
+  m_LocalScale: {x: 1.4, y: 0.1, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1821458233}
@@ -9074,7 +9078,7 @@ Transform:
   m_GameObject: {fileID: 1727645870}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5517252, y: 0.33528563, z: -0.25727367, w: 0.7190224}
-  m_LocalPosition: {x: -12.48, y: -20.77, z: -7.9}
+  m_LocalPosition: {x: -12.52, y: -20.85, z: -7.9}
   m_LocalScale: {x: 1.3333334, y: 0.2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []

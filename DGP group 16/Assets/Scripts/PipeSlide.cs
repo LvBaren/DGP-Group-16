@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections;
 
@@ -7,6 +8,7 @@ public class PipeSlide : MonoBehaviour
     public Transform exitPoint;      // Waar de speler uitkomt
     public float slideForce = 2f;    // Kracht waarmee speler vooruit wordt geduwd
     public float maxSpeed = 14f;     // Maximale snelheid tijdens het glijden
+    public float maxSlideTime = 6f;  // Failsafe: maximale tijd dat speler mag glijden
 
     private bool isSliding = false;
     private Rigidbody currentRb;
@@ -40,18 +42,27 @@ public class PipeSlide : MonoBehaviour
                 script.enabled = false;
         }
 
-        // Blijf duwen tot bij uitgang
-        while (Vector3.Distance(rb.position, exitPoint.position) > 1f)
+        float timer = 0f;
+
+        // Blijf duwen tot bij uitgang, of tot failsafe verloopt
+        while (Vector3.Distance(rb.position, exitPoint.position) > 1f && timer < maxSlideTime)
         {
             Vector3 direction = (exitPoint.position - rb.position).normalized;
 
             if (rb.linearVelocity.magnitude < maxSpeed)
                 rb.AddForce(direction * slideForce, ForceMode.Acceleration);
 
+            timer += Time.deltaTime;
             yield return null;
         }
 
-        // ? Herstel alle scripts veilig
+        // Als speler niet op tijd de uitgang haalt zet hem daar neer
+        if (Vector3.Distance(rb.position, exitPoint.position) > 1f)
+        {
+            rb.position = exitPoint.position + Vector3.up * 0.2f; // klein beetje boven de uitgang
+        }
+
+        // Herstel alle scripts veilig
         RestorePlayerScripts();
 
         isSliding = false;
@@ -59,13 +70,11 @@ public class PipeSlide : MonoBehaviour
 
     private void OnDisable()
     {
-        // ? Als dit script verdwijnt (bijv. scene load), herstel de player ook
         RestorePlayerScripts();
     }
 
     private void OnDestroy()
     {
-        // ? Extra failsafe voor zekerheid
         RestorePlayerScripts();
     }
 
