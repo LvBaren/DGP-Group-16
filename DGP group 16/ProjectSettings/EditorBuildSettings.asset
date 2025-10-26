@@ -53,9 +53,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Omhoog vliegen2.unity
     guid: 5c2ede36a971f0c4baf1261cb6e34ce0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Animaties/Naar Bel level overgang.unity
     guid: ba3d3286b32144fa1b2846dce7c9a024
+  - enabled: 1
+    path: Assets/Scenes/Eindscherm.unity
+    guid: 38fb757fb525043cd9b1011b1fd5230c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

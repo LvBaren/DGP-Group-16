@@ -2220,7 +2220,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 28.92, y: 18.97, z: -1.56}
-  m_LocalScale: {x: 13, y: 0.170625, z: 4.7759676}
+  m_LocalScale: {x: 19, y: 0.170625, z: 4.7759676}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1440714131}
@@ -4154,125 +4154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GearRotator
   axis: {x: 0, y: 0, z: 1}
   speed: 100
-  spinning: 0
---- !u!1001 &714390419
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1446488085}
-    m_Modifications:
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.32046625
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.32046625
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3178844
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 18.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -7.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9219904677615223282, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_Name
-      value: Gear_001 (36)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9219904677615223282, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9219904677615223282, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 714390423}
-    - targetCorrespondingSourceObject: {fileID: 9219904677615223282, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 714390422}
-  m_SourcePrefab: {fileID: 100100000, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
---- !u!4 &714390420 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8410611770804640584, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-  m_PrefabInstance: {fileID: 714390419}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &714390421 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9219904677615223282, guid: ed22ddf8841d72d42961113ade0bac7b, type: 3}
-  m_PrefabInstance: {fileID: 714390419}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &714390422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714390421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709673d5362bb4ab8bd05daeb416bed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomGearRotation
-  speedRangeDegPerSec: {x: 20, y: 50}
-  randomDirection: 1
-  axis: {x: 0, y: 0, z: 1}
---- !u!114 &714390423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714390421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7edb2388c46824546a8963552b9cd357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GearRotator
-  axis: {x: 0, y: 0, z: 1}
-  speed: 50
   spinning: 0
 --- !u!1001 &715490397
 PrefabInstance:
@@ -6442,7 +6323,7 @@ Transform:
   m_GameObject: {fileID: 993645782}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 17.02118, y: 28.17, z: 3.83}
+  m_LocalPosition: {x: 15.72, y: 28.17, z: 4.8}
   m_LocalScale: {x: 0.32385, y: 1.0795, z: 0.5397501}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6460,7 +6341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751c1b85c2cf54ba19ecda08374096c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneName: Startscherm
+  sceneName: Eindscherm
 --- !u!64 &993645785
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8630,7 +8511,6 @@ Transform:
   - {fileID: 715490398}
   - {fileID: 536241146}
   - {fileID: 931743103}
-  - {fileID: 714390420}
   - {fileID: 338157737}
   - {fileID: 930104025}
   - {fileID: 1940615058}
