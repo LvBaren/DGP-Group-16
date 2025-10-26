@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     private float rotationSpeed = 500; // How fast the character turns to the side their moving towards.
 
-    private float fadeDuration = 2700;
+    private float fadeDuration = 2100;
     private static float fadeTimer = 0f;
     private Material spookjeMaterial;
     private Color initialColor;
