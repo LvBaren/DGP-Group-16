@@ -17,15 +17,15 @@ public class LockInSpring : MonoBehaviour
         FindPlayerHoldPoint();
 
         // Check if Spring was already placed before
-        //if (PlayerPrefs.GetInt(SpringKey, 0) == 1)
-        //{
-        //    Renderer rend = itemToChange1.GetComponent<Renderer>();
-        //    rend.material = newMaterial;
-        //    MeshCollider meshCol = itemToChange2.GetComponent<MeshCollider>();
-        //    Renderer rend2 = itemToChange2.GetComponent<Renderer>();
-        //    meshCol.enabled = true;
-        //    rend2.material = newMaterial;
-        //}
+        if (PlayerPrefs.GetInt(SpringKey, 0) == 1)
+        {
+           Renderer rend = itemToChange1.GetComponent<Renderer>();
+           rend.material = newMaterial;
+           MeshCollider meshCol = itemToChange2.GetComponent<MeshCollider>();
+           Renderer rend2 = itemToChange2.GetComponent<Renderer>();
+           meshCol.enabled = true;
+           rend2.material = newMaterial;
+        }
     }
 
     void FindPlayerHoldPoint()
