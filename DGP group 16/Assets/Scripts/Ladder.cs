@@ -4,8 +4,9 @@ public class Ladder : MonoBehaviour
 {
     [Header("Ladder Settings")]
     public float climbSpeed = 3f;
-    public float topExitBuffer = 0.5f; // afstand boven de ladder waar speler niet meer klimt
-    public float bottomExitBuffer = 0.3f; // afstand onderaan voor soepele start
+    public float topExitBuffer = 0.5f;     // afstand boven de ladder waar speler niet meer klimt
+    public float bottomExitBuffer = 0.3f;  // afstand onderaan voor soepele start/exit
+    public float stepOffDownForce = -1.5f; // kleine ‘duw’ omlaag bij verlaten onderkant
 
     private Collider ladderCollider;
 
@@ -25,34 +26,67 @@ public class Ladder : MonoBehaviour
         Rigidbody rb = other.attachedRigidbody;
         if (rb == null) return;
 
-        float vertical = Input.GetAxisRaw("Vertical");
+        float vertical = Input.GetAxisRaw("Vertical"); // W/S, pijltjes of stick
         Vector3 rbPos = rb.position;
 
-        // Grenzen van de ladder berekenen
+        // Bepaal bruikbare klimzone van de ladder
         float ladderTop = ladderCollider.bounds.max.y - topExitBuffer;
         float ladderBottom = ladderCollider.bounds.min.y + bottomExitBuffer;
 
-        // Check of speler binnen de klimzone zit
         bool atTop = rbPos.y >= ladderTop;
         bool atBottom = rbPos.y <= ladderBottom;
 
-        if (Mathf.Abs(vertical) > 0.1f && !atTop && !atBottom)
+        // === KLIMMEN ===
+        if (Mathf.Abs(vertical) > 0.1f)
         {
-            // Klimmen
-            rb.useGravity = false;
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, vertical * climbSpeed, 0);
-        }
-        else if (atTop)
-        {
-            // Stop klimmen bovenaan ladder
-            rb.linearVelocity = Vector3.zero;
-            rb.useGravity = true;
+            // KLIM OMHOOG
+            if (vertical > 0f)
+            {
+                if (!atTop)
+                {
+                    rb.useGravity = false;
+                    rb.linearVelocity = new Vector3(rb.linearVelocity.x, vertical * climbSpeed, 0f);
+                }
+                else
+                {
+                    // Bovenkant bereikt: loslaten/uitstappen
+                    rb.linearVelocity = Vector3.zero;
+                    rb.useGravity = true; // speler stapt vanzelf uit bovenaan
+                }
+            }
+            // KLIM OMLAAG
+            else // vertical < 0
+            {
+                if (!atBottom)
+                {
+                    rb.useGravity = false;
+                    rb.linearVelocity = new Vector3(rb.linearVelocity.x, vertical * climbSpeed, 0f);
+                }
+                else
+                {
+                    // Onderrand: laat de speler van de ladder af “glijden”
+                    rb.useGravity = true;
+                    // kleine impuls/duw naar beneden voor natuurlijk uitstappen
+                    var v = rb.linearVelocity;
+                    v.y = Mathf.Min(v.y, stepOffDownForce);
+                    rb.linearVelocity = v;
+                }
+            }
         }
         else
         {
-            // Stil hangen op de ladder
-            rb.useGravity = false;
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, 0);
+            // Geen input: stil hangen aan de ladder (geen zakkende gravity)
+            // Alleen als we NIET aan de randen staan — aan de randen laten we default gedrag toe
+            if (!atTop && !atBottom)
+            {
+                rb.useGravity = false;
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, 0f);
+            }
+            else
+            {
+                // aan rand: niet geforceerd hangen zodat uitstappen natuurlijk blijft
+                rb.useGravity = true;
+            }
         }
     }
 
@@ -64,7 +98,8 @@ public class Ladder : MonoBehaviour
             if (rb != null)
             {
                 rb.useGravity = true;
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+                // laat horizontale/z-velocity intact; zet alleen verticale stil als hij ‘hing’
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, Mathf.Min(0f, rb.linearVelocity.y), rb.linearVelocity.z);
             }
         }
     }
