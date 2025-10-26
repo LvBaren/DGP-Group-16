@@ -11,7 +11,7 @@ public class FallingHahaLoser : MonoBehaviour
     public Transform cameraTransform;
 
     [Header("Settings")]
-    public float fallSpeed = 5f;
+    private float fallSpeed = 2f;
 
     private Vector3 cameraOffset;
     private bool isFalling = false;

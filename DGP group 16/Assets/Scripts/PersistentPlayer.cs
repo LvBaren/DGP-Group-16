@@ -49,7 +49,7 @@ public class PersistentPlayer : MonoBehaviour
 
             // Verplaats speler direct naar spawn
             transform.position = spawn.transform.position;
-            // transform.rotation = spawn.transform.rotation; // optioneel
+            transform.rotation = Quaternion.identity;
 
             // Reset physics
             rb.linearVelocity = Vector3.zero;
