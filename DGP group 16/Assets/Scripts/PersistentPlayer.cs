@@ -8,6 +8,9 @@ public class PersistentPlayer : MonoBehaviour
     private static PersistentPlayer _instance;
     private Rigidbody rb;
 
+    // Hier onthouden we welk spawnpoint moet worden gebruikt
+    public static string NextSpawnTag = "";
+
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -31,32 +34,37 @@ public class PersistentPlayer : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Start coroutine om spawn te verwerken
         StartCoroutine(SpawnAtPoint());
     }
 
     private IEnumerator SpawnAtPoint()
     {
-        // Wacht tot einde van frame, zodat colliders en physics klaar zijn
         yield return new WaitForEndOfFrame();
 
-        var spawn = GameObject.FindWithTag("PlayerSpawn");
+        // Gebruik opgegeven spawn tag of standaard "PlayerSpawn"
+        string spawnTag = string.IsNullOrEmpty(NextSpawnTag) ? "PlayerSpawn" : NextSpawnTag;
+
+        var spawn = GameObject.FindWithTag(spawnTag);
+
         if (spawn != null)
         {
-            // Interpolatie tijdelijk uit
             var oldInterpolation = rb.interpolation;
             rb.interpolation = RigidbodyInterpolation.None;
 
-            // Verplaats speler direct naar spawn
             transform.position = spawn.transform.position;
-            transform.rotation = Quaternion.identity;
+            transform.rotation = Quaternion.identity; // altijd naar voren
 
-            // Reset physics
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            // Zet interpolatie terug
             rb.interpolation = oldInterpolation;
         }
+        else
+        {
+            Debug.LogWarning($"Spawnpoint with tag '{spawnTag}' not found. Using default position.");
+        }
+
+        // Reset de spawn tag na gebruik
+        NextSpawnTag = "";
     }
 }

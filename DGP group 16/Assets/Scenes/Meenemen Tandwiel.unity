@@ -1250,6 +1250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Contra gewichten
+  nextSpawnTag: PlayerSpawn2
 --- !u!64 &505456711
 MeshCollider:
   m_ObjectHideFlags: 0

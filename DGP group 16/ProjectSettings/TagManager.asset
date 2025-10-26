@@ -14,6 +14,7 @@ TagManager:
   - Wall
   - SpringExit
   - SpringSpawn
+  - PlayerSpawn2
   layers:
   - Default
   - TransparentFX

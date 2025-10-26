@@ -6,20 +6,30 @@ public class NextLevelPlane : MonoBehaviour
     [Header("Scene to load on collision")]
     public string sceneName; // Set this in the Inspector
 
+    [Header("Optional: Custom spawn point tag or name for next scene")]
+    public string nextSpawnTag = ""; // leave empty to use default "PlayerSpawn"
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneName);
+            LoadNextScene();
         }
     }
 
-    // Optional: if the collider is a Trigger
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneName);
+            LoadNextScene();
         }
+    }
+
+    private void LoadNextScene()
+    {
+        // Sla het gewenste spawnpoint op, zodat de PersistentPlayer het weet
+        PersistentPlayer.NextSpawnTag = nextSpawnTag;
+
+        SceneManager.LoadScene(sceneName);
     }
 }

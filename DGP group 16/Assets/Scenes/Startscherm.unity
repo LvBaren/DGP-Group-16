@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Bel
+  nextSpawnTag: 
 --- !u!64 &117972068
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -465,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Omhoog vliegen2
+  nextSpawnTag: 
 --- !u!64 &196559262
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2371,6 +2373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Bel
+  nextSpawnTag: 
 --- !u!64 &526668375
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4242,7 +4245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751c1b85c2cf54ba19ecda08374096c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneName: Meenemen Tandwiel
+  sceneName: Contra gewichten
+  nextSpawnTag: 
 --- !u!64 &822835412
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6193,6 +6197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Bel
+  nextSpawnTag: 
 --- !u!64 &1242665800
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7101,6 +7106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Bel
+  nextSpawnTag: 
 --- !u!64 &1476724878
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7960,6 +7966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Bel
+  nextSpawnTag: 
 --- !u!64 &1625303361
 MeshCollider:
   m_ObjectHideFlags: 0
