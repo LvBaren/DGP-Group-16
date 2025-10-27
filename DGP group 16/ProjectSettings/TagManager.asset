@@ -15,6 +15,7 @@ TagManager:
   - SpringExit
   - SpringSpawn
   - PlayerSpawn2
+  - TubeSpawn
   layers:
   - Default
   - TransparentFX

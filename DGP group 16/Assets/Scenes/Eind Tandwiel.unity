@@ -4980,7 +4980,7 @@ Transform:
   m_GameObject: {fileID: 820759435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.06, y: 0.8433332, z: 0.51}
+  m_LocalPosition: {x: -0.06, y: 0.8433332, z: 0.88}
   m_LocalScale: {x: 0.09999998, y: 0.33333334, z: 0.16666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4998,7 +4998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751c1b85c2cf54ba19ecda08374096c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneName: Omhoog vliegen
+  sceneName: Contra gewichten
   nextSpawnTag: 
   transition: {fileID: 558534410}
   transitionTime: 1

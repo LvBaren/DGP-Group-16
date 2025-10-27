@@ -47,7 +47,7 @@ public class NextLevelPlane : MonoBehaviour
 
     [SerializeField] Animator transition;
 
-    public float transitionTime = 1.0f;
+    public float transitionTime = 0.5f;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -72,15 +72,15 @@ public class NextLevelPlane : MonoBehaviour
 
     IEnumerator LoadLevel()
     {
-        transition.SetTrigger("Start");
-
+        transition.SetTrigger("End");
+        yield return new WaitForSeconds(transitionTime);
         // Sla het gewenste spawnpoint op, zodat de PersistentPlayer het weet
         PersistentPlayer.NextSpawnTag = nextSpawnTag;
-
-        yield return new WaitForSeconds(transitionTime);
-
         SceneManager.LoadScene(sceneName);
+        
 
-        //transition.SetTrigger("Start");
+        
+
+        transition.SetTrigger("Start");
     }
 }
