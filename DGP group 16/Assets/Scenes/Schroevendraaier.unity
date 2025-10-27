@@ -2250,6 +2250,7 @@ MonoBehaviour:
   climbSpeed: 20
   topExitBuffer: 0.5
   bottomExitBuffer: 0.3
+  stepOffDownForce: -1.5
 --- !u!65 &935556400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2796,6 +2797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Kruispunt
+  nextSpawnTag: 
+  transition: {fileID: 0}
+  transitionTime: 1
 --- !u!64 &1118165663
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3620,6 +3624,108 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1264018482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6009036008699238872, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_Name
+      value: Crossfade
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+--- !u!95 &1264018483 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3515422103428431829, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+  m_PrefabInstance: {fileID: 1264018482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289056113 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5357291655529466252, guid: 74ec0c569f1dd2744923b5ac0a7f687f, type: 3}
@@ -4809,6 +4915,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Kruispunt
+  nextSpawnTag: 
+  transition: {fileID: 1264018483}
+  transitionTime: 1
 --- !u!64 &1855303627
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5018,6 +5127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Kruispunt
+  nextSpawnTag: 
+  transition: {fileID: 0}
+  transitionTime: 1
 --- !u!64 &2080458677
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5228,13 +5340,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119525544}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.08715588, y: 0, z: 0, w: 0.9961947}
   m_LocalPosition: {x: -42, y: 7.2, z: -15.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 681688663}
-  m_LocalEulerAnglesHint: {x: 180, y: 180, z: 180}
+  m_LocalEulerAnglesHint: {x: 170, y: 180, z: 180}
 --- !u!114 &2119525547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5351,7 +5463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraTest
   player: {fileID: 0}
-  offset: {x: 0, y: 0, z: -5}
+  offset: {x: 0, y: 1, z: -7}
   smoothSpeed: 5
 --- !u!1 &2142477997
 GameObject:
@@ -5482,3 +5594,4 @@ SceneRoots:
   - {fileID: 1100665417}
   - {fileID: 1592508425}
   - {fileID: 1238246173}
+  - {fileID: 1264018482}

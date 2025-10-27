@@ -7786,6 +7786,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sceneName: Kruispunt
+  nextSpawnTag: 
+  transition: {fileID: 1670834529}
+  transitionTime: 1
 --- !u!64 &1464019911
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8724,6 +8727,108 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8460434500664577764, guid: 6588986bf12e88945abc706c1cb9596d, type: 3}
   m_PrefabInstance: {fileID: 1664203687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1670834528
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089730337836489398, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6009036008699238872, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+      propertyPath: m_Name
+      value: Crossfade
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+--- !u!95 &1670834529 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3515422103428431829, guid: d5e71cc522bb9094a9049f9bb83f9435, type: 3}
+  m_PrefabInstance: {fileID: 1670834528}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1673143905
 PrefabInstance:
@@ -11440,6 +11545,7 @@ SceneRoots:
   - {fileID: 750343407}
   - {fileID: 655940862}
   - {fileID: 1851441857}
+  - {fileID: 1670834528}
   - {fileID: 356305205}
   - {fileID: 1905345466}
   - {fileID: 263056543}
