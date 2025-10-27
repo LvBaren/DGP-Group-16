@@ -2176,8 +2176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PipeSlide
   exitPoint: {fileID: 1712194413}
   slideForce: 3
-  maxSpeed: 16
-  maxSlideTime: 2
+  maxSpeed: 18
+  maxSlideTime: 7
 --- !u!64 &530948097
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5597,7 +5597,7 @@ MonoBehaviour:
   exitPoint: {fileID: 2000192340}
   slideForce: 3
   maxSpeed: 16
-  maxSlideTime: 2
+  maxSlideTime: 7
 --- !u!64 &1154592817
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7691,8 +7691,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PipeSlide
   exitPoint: {fileID: 1727645874}
   slideForce: 3
-  maxSpeed: 20
-  maxSlideTime: 2
+  maxSpeed: 18
+  maxSlideTime: 7
 --- !u!64 &1501011167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8183,7 +8183,7 @@ MonoBehaviour:
   exitPoint: {fileID: 1235051253}
   slideForce: 3
   maxSpeed: 16
-  maxSlideTime: 2
+  maxSlideTime: 7
 --- !u!64 &1639694663
 MeshCollider:
   m_ObjectHideFlags: 0
