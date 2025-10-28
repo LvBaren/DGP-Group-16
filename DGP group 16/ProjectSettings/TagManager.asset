@@ -16,6 +16,7 @@ TagManager:
   - SpringSpawn
   - PlayerSpawn2
   - TubeSpawn
+  - Audio
   layers:
   - Default
   - TransparentFX

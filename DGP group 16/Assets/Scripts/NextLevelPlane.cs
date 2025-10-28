@@ -34,6 +34,7 @@
 //    }
 //}
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,7 +48,14 @@ public class NextLevelPlane : MonoBehaviour
 
     [SerializeField] Animator transition;
 
-    public float transitionTime = 0.5f;
+    public float transitionTime = 1f;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -72,15 +80,15 @@ public class NextLevelPlane : MonoBehaviour
 
     IEnumerator LoadLevel()
     {
+        audioManager.PlaySFX(audioManager.nextlevelIn);
         transition.SetTrigger("End");
         yield return new WaitForSeconds(transitionTime);
+
         // Sla het gewenste spawnpoint op, zodat de PersistentPlayer het weet
         PersistentPlayer.NextSpawnTag = nextSpawnTag;
         SceneManager.LoadScene(sceneName);
-        
 
-        
-
+        audioManager.PlaySFX(audioManager.nextlevelOut);
         transition.SetTrigger("Start");
     }
 }

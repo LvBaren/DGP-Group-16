@@ -7,6 +7,13 @@ public class Bell : MonoBehaviour
 
     private float initialZ;          // Store initial rotation
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         // Store initial rotation around Z-axis
@@ -20,5 +27,23 @@ public class Bell : MonoBehaviour
 
         // Apply rotation (assuming bell swings around Z-axis)
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, initialZ + angle);
+    }
+
+    public void OnBellHit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (audioManager.bellSound != null)
+                audioManager.PlaySFX(audioManager.bellSound);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (audioManager.bellSound != null)
+                audioManager.PlaySFX(audioManager.bellSound);
+        }
     }
 }

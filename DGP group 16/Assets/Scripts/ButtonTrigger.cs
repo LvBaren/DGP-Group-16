@@ -21,6 +21,13 @@ public class ButtonTrigger : MonoBehaviour
     private Vector3 pressedPosition;
     private bool isPressed = false;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         if (buttonTop != null)
@@ -52,7 +59,8 @@ public class ButtonTrigger : MonoBehaviour
         if (other.CompareTag("Player") && !isPressed)
         {
             isPressed = true;
-
+            audioManager.PlaySFX(audioManager.buttonPress);
+            audioManager.PlaySFX(audioManager.doorOpen);
             // Visuele feedback
             if (buttonRenderer != null && pressedMaterial != null)
                 buttonRenderer.material = pressedMaterial;
@@ -70,7 +78,8 @@ public class ButtonTrigger : MonoBehaviour
     public void ResetButton()
     {
         isPressed = false;
-
+        audioManager.PlaySFX(audioManager.buttonRelease);
+        audioManager.PlaySFX(audioManager.doorClose);
         // Deactiveer de NextLevelPlane als deze knop wordt uitgeschakeld
         if (nextLevelPlane != null)
             nextLevelPlane.SetActive(false);

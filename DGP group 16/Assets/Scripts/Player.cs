@@ -23,6 +23,13 @@ public class Player : MonoBehaviour
     private Material spookjeMaterial;
     private Color initialColor;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -77,6 +84,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            audioManager.PlaySFX(audioManager.playerJump);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }

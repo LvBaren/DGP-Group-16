@@ -16,16 +16,23 @@ public class UseScrewdriver : MonoBehaviour
 
     private const string ScrewdriverKey = "ScrewdriverPlaced";
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         FindPlayerHoldPoint();
         if (PlayerPrefs.GetInt(ScrewdriverKey, 0) == 1)
         {
-           springCoverup.SetActive(false);
-           springPickupItem.SetActive(true);
-           springBoxPlane.SetActive(false);
+            springCoverup.SetActive(false);
+            springPickupItem.SetActive(true);
+            springBoxPlane.SetActive(false);
         }
-        }
+     }
 
     void FindPlayerHoldPoint()
     {
@@ -65,6 +72,7 @@ public class UseScrewdriver : MonoBehaviour
                 // Disable normal spring
                 if (springCoverup != null)
                 {
+                    audioManager.PlaySFX(audioManager.screwdriverUse);
                     springCoverup.SetActive(false);
                 }
 
@@ -90,6 +98,7 @@ public class UseScrewdriver : MonoBehaviour
         }
         else
         {
+            audioManager.PlaySFX(audioManager.error);
             Debug.Log("Player collided but isn’t holding anything.");
         }
     }

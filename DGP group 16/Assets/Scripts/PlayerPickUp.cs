@@ -20,6 +20,13 @@ public class PlayerPickUp : MonoBehaviour
 
     private PickupItem carried;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) TryPickup();
@@ -48,6 +55,7 @@ public class PlayerPickUp : MonoBehaviour
         if (best == null) return;
 
         carried = best;
+        audioManager.PlaySFX(audioManager.pickupItem);
         carried.PickUp(holdPoint);
     }
 
@@ -62,6 +70,7 @@ public class PlayerPickUp : MonoBehaviour
         if (socket != null && socket.CanAccept(carried))
         {
             carried.SnapToSocket(socket);
+            audioManager.PlaySFX(audioManager.placeItem);
             carried = null;
             return;
         }
@@ -71,6 +80,7 @@ public class PlayerPickUp : MonoBehaviour
         Vector3 impulse = holdPoint.forward * dropImpulse;
 
         carried.DropFree(dropPos, impulse);
+        audioManager.PlaySFX(audioManager.dropItem);
         carried = null;
     }
 

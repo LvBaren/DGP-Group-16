@@ -10,6 +10,13 @@ public class Door : MonoBehaviour
     private Vector3 closedPosition;
     private Vector3 openPosition;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         closedPosition = transform.position;
@@ -24,6 +31,7 @@ public class Door : MonoBehaviour
 
     public void SetOpen(bool state)
     {
+        audioManager.PlaySFX(audioManager.doorClose);
         isOpen = state;
     }
 }

@@ -12,6 +12,13 @@ public class LockInSpring : MonoBehaviour
     private Transform playerHoldPoint;
     private const string SpringKey = "SpringPlaced";
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         FindPlayerHoldPoint();
@@ -69,6 +76,7 @@ public class LockInSpring : MonoBehaviour
                     Renderer rend = itemToChange1.GetComponent<Renderer>();
                     if (rend != null)
                     {
+                        audioManager.PlaySFX(audioManager.placeItem);
                         rend.material = newMaterial;
                         Debug.Log("Changed material on item 1!");
                     }
@@ -104,6 +112,7 @@ public class LockInSpring : MonoBehaviour
         }
         else
         {
+            audioManager.PlaySFX(audioManager.error);
             Debug.Log("Player collided but isn’t holding anything.");
         }
     }
